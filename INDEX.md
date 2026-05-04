@@ -28,6 +28,7 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Continue](./continue/README.md) | ⭐ 24,000+ | Free (OSS) | Data privacy, on-prem, model flexibility |
 | [Aider](./aider/README.md) | ⭐ 25,000+ | Free (OSS) | Terminal-native, git-integrated, batch refactors |
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
+| [Caveman](./caveman/README.md) | ⭐ 53,000+ | Free (OSS) | Cutting agent output ~75%; multi-agent terse-mode plugin |
 
 ---
 
@@ -70,16 +71,6 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Obviously AI](./obviously-ai/README.md) | — (closed source) | $75/mo+ | Explainable ML predictions, no-code forecasting |
 | [Bardeen](./bardeen/README.md) | — (closed source) | Free / $10/mo | Browser automation, web scraping, lead enrichment |
 | [Polymer](./polymer/README.md) | — (closed source) | Free / $10/mo | Self-serve dashboards, shareable data visualisation |
-
----
-
-## 🪨 Coding Methodologies
-
-*For engineers and AI agents. Mindset skills, not tools — no install, no API.*
-
-| Skill | Stars | Pricing | Best for |
-|---|---|---|---|
-| [Caveman](./caveman/README.md) | — (methodology) | Free | Curbing premature abstraction; constraining refactor-happy AI agents |
 
 ---
 
