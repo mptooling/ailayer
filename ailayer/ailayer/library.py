@@ -72,6 +72,7 @@ class Skill:
         self.path = path
         self.name = path.name  # directory name, e.g. "langchain"
         self._readme: Optional[str] = None
+        self._skill_prompt: Optional[str] = None
 
     @property
     def readme(self) -> str:
@@ -99,8 +100,19 @@ class Skill:
         return "Uncategorised"
 
     def skill_prompt(self) -> str:
-        """Return the content suitable for injecting as a slash-command prompt."""
-        return self.readme
+        """Return the content for injection as a slash-command/skill prompt.
+
+        Prefers SKILL_PROMPT.md (agent-oriented HOW-TO instructions) over
+        README.md (human-oriented documentation). Falls back to the README
+        if no SKILL_PROMPT.md is present.
+        """
+        if self._skill_prompt is None:
+            prompt_path = self.path / "SKILL_PROMPT.md"
+            if prompt_path.exists():
+                self._skill_prompt = prompt_path.read_text(encoding="utf-8")
+            else:
+                self._skill_prompt = self.readme
+        return self._skill_prompt
 
     def __repr__(self) -> str:
         return f"<Skill {self.name}>"
