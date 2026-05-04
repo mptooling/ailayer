@@ -2,7 +2,7 @@
 
 > A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
 >
-> **Last updated:** April 2026 | **Tools documented:** 20 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** April 2026 | **Tools documented:** 21 | **Next step:** per-tool automation & enablement guides
 
 ---
 
@@ -70,6 +70,16 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Obviously AI](./obviously-ai/README.md) | — (closed source) | $75/mo+ | Explainable ML predictions, no-code forecasting |
 | [Bardeen](./bardeen/README.md) | — (closed source) | Free / $10/mo | Browser automation, web scraping, lead enrichment |
 | [Polymer](./polymer/README.md) | — (closed source) | Free / $10/mo | Self-serve dashboards, shareable data visualisation |
+
+---
+
+## 🪨 Coding Methodologies
+
+*For engineers and AI agents. Mindset skills, not tools — no install, no API.*
+
+| Skill | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Caveman](./caveman/README.md) | — (methodology) | Free | Curbing premature abstraction; constraining refactor-happy AI agents |
 
 ---
 
