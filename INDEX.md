@@ -8,12 +8,12 @@
 
 ## How to use this library
 
-Each tool has its own folder with a `README.md` containing:
-- GitHub repo link & star count
-- Official documentation links
-- Plain-English summary
-- Related articles & comparisons
-- AI agents that can use the tool
+Each tool has its own folder with two files:
+
+- **`README.md`** — human-oriented documentation: GitHub link & star count, official docs, plain-English summary, related articles, and which AI agents integrate with the tool.
+- **`SKILL_PROMPT.md`** — agent-oriented HOW-TO instructions: setup, API patterns, what to do, what to avoid. This is what `ailayer add skill <name>` injects into Claude Code, Codex CLI, or Gemini CLI.
+
+When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but READMEs are documentation, not prompts, so always prefer the dedicated skill file.
 
 ---
 
