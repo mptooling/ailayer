@@ -1,38 +1,41 @@
 # Caveman skill
 
-Code like a caveman. Solve the problem in front of you with the dumbest construct that works. No clever indirection, no speculative abstractions, no patterns you don't actively need.
+Use this skill when installing or driving the `caveman` plugin to put a coding agent into terse, token-reduced response mode.
 
-## When to apply
+## Install
 
-- Default mode for any code change in this project unless the user explicitly asks for a refactor or a design pattern.
-- Especially when adding a feature, fixing a bug, or writing one-off scripts.
+- Universal one-liner (auto-detects 30+ agents):
+  - macOS / Linux / WSL: `curl -fsSL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.sh | bash`
+  - Windows PowerShell: `irm https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.ps1 | iex`
+- Useful flags: `--minimal` (plugin only, no hooks/MCP), `--all` (plugin + hooks + statusline + MCP shrink + per-repo rules), `--dry-run`, `--only <agent>`, `--list`, `--force`.
+- Manual per-agent install:
+  - Claude Code: `claude plugin marketplace add JuliusBrussee/caveman && claude plugin install caveman@caveman`
+  - Gemini CLI: `gemini extensions install https://github.com/JuliusBrussee/caveman`
+  - Cursor / Windsurf / Cline / Copilot: `npx skills add JuliusBrussee/caveman -a <cursor|windsurf|cline|github-copilot>`
+  - Anything else: `npx skills add JuliusBrussee/caveman` (auto-detect).
+- Uninstall: `claude plugin disable caveman` / `gemini extensions uninstall caveman` / `npx skills remove caveman`.
 
-## Rules
+## Activate
 
-- Three is the number. Duplicate code two times before considering an abstraction; only extract on the third occurrence. Two near-duplicates are cheaper than one wrong abstraction.
-- Inline first, extract later. Write the logic where it runs. Helper functions earn their place by being called from at least two real sites — not "just in case."
-- No new layers. Do not add a class, a module, a wrapper, or an interface unless the problem already has two concrete shapes that need it.
-- No flags, no hooks, no plugins for hypothetical futures. Add the option when the second user shows up, not before.
-- Prefer concrete over generic. Hard-code the value, the path, the type. Generic code is a tax paid every time someone reads it.
-- Short call stacks beat short functions. A 40-line function you can read top-to-bottom beats six 8-line functions scattered across a file.
-- Comments only for *why* (a constraint, an invariant, a gotcha). Never for *what* — the code says what.
+- Trigger inside an agent session with `/caveman` (Claude Code, Gemini CLI), `$caveman` (Codex), or any of: "talk like caveman", "caveman mode", "less tokens please".
+- Pick intensity at activation: `/caveman lite` (light trim), `/caveman full` (default, ~75% output cut), `/caveman ultra` (maximum compression, fragment-style), `/caveman wenyan` (classical Chinese 文言文 mode).
+- Toggle off with `/caveman off` or restart the session.
 
-## Debugging caveman-style
+## Sub-skills (Claude Code)
 
-- `print()` first, profiler/debugger second. Sprinkle prints, run, read, remove. Do not invest in tracing infrastructure for a one-off bug.
-- Bisect by deletion. When a system misbehaves, delete code until it works, then add back. Faster than reasoning.
-- Reproduce before fixing. If you cannot reproduce, you cannot fix — do not patch in the dark.
+- `caveman-commit` — write terse, fragment-style commit messages.
+- `caveman-review` — one-line code review comments.
+- `caveman-compress` — compress an attached doc/diff before sending it on; pairs with the MCP shrink proxy to cut input tokens too.
+- `caveman-stats` — print lifetime tokens-saved badge.
 
-## When NOT to apply
+## Per-repo auto-start
 
-- Public APIs, library interfaces, or anything with multiple consumers — these need stable shapes; caveman code is fine in implementations *behind* them.
-- Security-critical paths (auth, crypto, query construction) — boring, well-trodden patterns beat hand-rolled logic.
-- Code that touches money, PII, or irreversible side effects — be deliberate, not minimal.
+- Run the installer with `--with-init` (or `--all`) to drop `.cursor/rules/caveman.mdc`, `.windsurf/rules/caveman.md`, `.clinerules/caveman.md`, `.github/copilot-instructions.md`, and `AGENTS.md` into the current repo. The agent will auto-engage caveman mode in that repo only.
+- For Claude Code without per-repo init, the plugin's hooks and statusline are global once installed.
 
 ## Avoid
 
-- "Refactoring while you're in there." If the change you were asked for is done and tested, stop. Drive-by refactors create noise in diffs and bugs in unrelated code.
-- Adding a strategy/factory/visitor pattern because "we might need to swap implementations later." You won't, and if you do, the *real* shape will tell you what to do.
-- Wrapping standard library or framework functions in single-line helpers — it just adds a hop for the next reader.
-- Moving working code into "utils" or "helpers" without a second caller. Premature dumping ground.
-- Caveman code in modules other people import. Keep the discipline scoped to leaves of the call graph.
+- Caveman mode in customer-facing or written-deliverable contexts (PR descriptions for stakeholders, user-facing docs, support replies). The terseness reads as rude outside engineering channels.
+- Running `--with-init` in a shared repo without the team's agreement — it commits a coding-style preference into project files.
+- Stacking caveman with other prose-style rules; conflicting instructions degrade output. Pick one voice per agent profile.
+- Trusting the 75% number for *every* prompt — savings range 22–87% depending on task. Use `caveman-stats` to measure your actual ratio before claiming wins.

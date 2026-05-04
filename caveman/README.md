@@ -1,45 +1,42 @@
 # Caveman
 
-> **Category:** Coding Methodology | **Pricing:** Free | **Type:** Methodology / mindset (no tool to install)
+> **Category:** AI Coding Assistant (plugin / agent skill) | **Pricing:** Free (open source) | **Type:** Open Source (MIT)
 
 ---
 
 ## Repository
 
-Caveman is not a product — it's a coding *methodology*. There is nothing to install. Reference material:
-
-- ["Caveman debugging" — Wikipedia (Tracing)](https://en.wikipedia.org/wiki/Tracing_(software))
-- ["The first sign of underengineering" — Sandi Metz on duplication over abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
-- [WET vs DRY discussion](https://overreacted.io/the-wet-codebase/)
-- [YAGNI — Martin Fowler](https://martinfowler.com/bliki/Yagni.html)
+- [GitHub — JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) ⭐ 53,000+
+- Companion repos: [cavemem](https://github.com/JuliusBrussee/cavemem) (memory) · [cavekit](https://github.com/JuliusBrussee/cavekit) (toolkit)
+- Homepage: [getcaveman.dev](https://getcaveman.dev/)
 
 ---
 
 ## Documentation
 
-There is no official documentation for "caveman coding" — the philosophy lives in folklore. Closest references:
-
-- ["Rule of Three" (refactoring) — Martin Fowler](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming))
-- [Grug Brained Developer](https://grugbrain.dev/) — same spirit, longer manifesto
-- [Print-statement debugging benchmarks vs IDE debuggers](https://www.usenix.org/conference/atc18/presentation/beschastnikh)
+- [Install script (one-liner)](https://github.com/JuliusBrussee/caveman#install)
+- [Intensity levels: Lite / Full / Ultra / 文言文](https://github.com/JuliusBrussee/caveman#intensity-levels)
+- [Caveman skills (commit, review, compress, stats)](https://github.com/JuliusBrussee/caveman#caveman-skills)
+- [Benchmarks](https://github.com/JuliusBrussee/caveman#benchmarks)
+- [Evals (technical accuracy retention)](https://github.com/JuliusBrussee/caveman#evals)
 
 ---
 
 ## Summary
 
-The **caveman** approach is a deliberate rejection of premature abstraction, clever indirection, and speculative generality. Code like a caveman: solve the problem in front of you with the dumbest construct that works, repeat code three times before extracting it, and debug with `print()` until the picture is clear. The intuition: every abstraction is a bet on the future that pays off only if the future arrives in the predicted shape — and it usually doesn't. Junior teams over-abstract because clever code feels productive; senior teams under-abstract because they've paid the cost of someone else's clever code at 3am. "Caveman" is shorthand for keeping the code stupid, the call graph shallow, and the debugger-of-last-resort (a print) always within reach. It is a coding mindset, not a tool — there are no APIs, no SaaS, no integrations.
+Caveman is a multi-agent plugin that flips a coding agent into "caveman mode" — terse, fragment-style responses that cut **~65–75% of output tokens** while keeping technical accuracy. The viral observation it formalises: LLMs respond just as correctly when prompted to drop the connective tissue ("The reason your component is re-rendering is likely because…") and lead with the substance ("New object ref each render. Wrap in `useMemo`."). Caveman packages this as a one-line installer that detects 30+ agents (Claude Code, Codex, Gemini CLI, Cursor, Windsurf, Cline, Copilot, Continue, Aider, Goose, OpenHands, Warp, Replit Agent, …) and wires the right native install for each. On Claude Code it ships a `/caveman` slash command, statusline badge, hooks, and an MCP "shrink" proxy that also compresses *input* tokens (~46% on top of the output savings). Sub-skills include `caveman-commit` (terse commit messages), `caveman-review` (one-line code reviews), `caveman-compress`, and `caveman-stats`. Multiple intensity levels — Lite, Full, Ultra, and 文言文 (classical Chinese) — let you dial how much fluff to drop.
 
-**Best for:** Engineers who keep getting bitten by premature DRY, design-pattern overuse, or "framework first" instincts; pair-programming with AI agents that love to refactor working code into something "more elegant."
+**Best for:** Engineers running long agent sessions where output volume matters (latency, cost, scrollback fatigue); teams standardising on a shared "less talk, more substance" agent voice.
 
 ---
 
 ## Related Materials
 
-- [Grug Brained Developer](https://grugbrain.dev/) — the canonical modern manifesto in this style
-- ["Avoid Premature Abstraction" — Kent C. Dodds](https://kentcdodds.com/blog/aha-programming)
-- ["The Wrong Abstraction" — Sandi Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
-- ["Programming as Theory Building" — Peter Naur, 1985](https://pages.cs.wisc.edu/~remzi/Naur.pdf)
-- ["Worse Is Better" — Richard Gabriel](https://www.dreamsongs.com/RiseOfWorseIsBetter.html)
+- [getcaveman.dev](https://getcaveman.dev/) — homepage with live demos
+- [cavemem](https://github.com/JuliusBrussee/cavemem) — caveman memory layer
+- [cavekit](https://github.com/JuliusBrussee/cavekit) — caveman dev toolkit
+- [Token-reduction prompt-engineering paper (cited by repo)](https://arxiv.org/abs/2604.00025)
+- [Anthropic — Claude Code skills](https://docs.anthropic.com/en/docs/claude-code)
 
 ---
 
@@ -47,12 +44,12 @@ The **caveman** approach is a deliberate rejection of premature abstraction, cle
 
 | Agent / Framework | How it integrates |
 |---|---|
-| **Claude Code** | Inject as a slash command/skill so Claude defaults to brute-force, no-abstraction edits in this project |
-| **Cursor / Windsurf** | Encode in `.cursor/rules/` or `.windsurf/rules/` to constrain refactor-happy agents |
-| **GitHub Copilot** | Place in `.github/copilot-instructions.md` to bias suggestions away from premature patterns |
-| **Aider** | Pair with `/architect` mode to keep its plans simple before applying them |
-| **Any LLM agent** | Works as a system-prompt fragment — no API integration needed |
+| **Claude Code** | Native plugin (`claude plugin install caveman@caveman`); `/caveman` slash command, statusline badge, MCP shrink proxy |
+| **Codex CLI** | Plugin via the install script; toggle with `$caveman`; auto-start via `.codex/hooks.json` |
+| **Gemini CLI** | Extension via `gemini extensions install https://github.com/JuliusBrussee/caveman` |
+| **Cursor / Windsurf / Cline / GitHub Copilot** | Skill via `npx skills add JuliusBrussee/caveman -a <profile>`; with `--with-init` writes `.cursor/rules/caveman.mdc` etc. |
+| **30+ other agents** | Auto-detected by the universal installer (Aider, Goose, Continue, Roo, Amp, Junie, Warp, Replit Agent, OpenHands, Antigravity, …) |
 
 ---
 
-*Last updated: 2026*
+*Last updated: 2026-05*
