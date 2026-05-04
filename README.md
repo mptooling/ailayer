@@ -19,7 +19,7 @@ Each row is a directory in this repo. Click the name for the human-readable READ
 | [continue](./continue/) | How to configure `~/.continue/config.json` and slash commands |
 | [aider](./aider/) | How to drive Aider interactively or from CI for batch refactors |
 | [windsurf](./windsurf/) | How to constrain Windsurf's Cascade agent and its terminal allow-list |
-| [caveman](./caveman/) | A coding *methodology*: brute-force, no abstractions, print-debug |
+| [caveman](./caveman/) | How to install + invoke the multi-agent caveman plugin (~75% output token cut) |
 
 ### 🤖 Build agents and automations
 
