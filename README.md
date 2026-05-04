@@ -20,6 +20,7 @@ Each row is a directory in this repo. Click the name for the human-readable READ
 | [aider](./aider/) | How to drive Aider interactively or from CI for batch refactors |
 | [windsurf](./windsurf/) | How to constrain Windsurf's Cascade agent and its terminal allow-list |
 | [caveman](./caveman/) | How to install + invoke the multi-agent caveman plugin (~75% output token cut) |
+| [claude-mem](./claude-mem/) | How to install Claude-Mem and query its 3-layer MCP search for cross-session memory |
 
 ### 🤖 Build agents and automations
 
@@ -51,7 +52,7 @@ Each row is a directory in this repo. Click the name for the human-readable READ
 | [bardeen](./bardeen/) | Browser-automation playbook triggers and scrape rate-limits |
 | [polymer](./polymer/) | Dashboard data flow and public/private embed patterns |
 
-> 21 skills today. Detailed comparisons (stars, pricing, integrations) live in [`INDEX.md`](./INDEX.md).
+> 22 skills today. Detailed comparisons (stars, pricing, integrations) live in [`INDEX.md`](./INDEX.md).
 
 ---
 
