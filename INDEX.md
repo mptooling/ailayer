@@ -89,11 +89,17 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 
 ## Roadmap
 
-- [ ] Add automation scripts per tool (setup, API examples)
-- [ ] Add internal enablement guides per role
-- [ ] Add cost comparison matrix
-- [ ] Add security & compliance notes per tool
-- [ ] Expand to 40+ tools (second batch)
+The detailed implementation plan lives in [`ROADMAP.md`](./ROADMAP.md) — 47 PRs across 8 phases, sequenced for `ailayer` adapter fixes first, then methodology / domain / CLI skills, hook + MCP bundles, and marketplace expansion.
+
+Headline goals:
+
+- [ ] Fix `ailayer` adapters (Codex TOML config + correct hook events; Gemini TOML slash-commands + full hook taxonomy) — Phase 0
+- [ ] Add `SKILL_PROMPT.md` to all 22 existing entries — Phase 1
+- [ ] Ship the methodology pack (TDD, brainstorming, plans, debugging, verification, parallel agents, worktrees) — Phase 2
+- [ ] Ship domain skills (Postgres, migrations, Terraform, security review, OpenAPI, GraphQL, release engineering) — Phase 3
+- [ ] Ship CLI-tooling skills (rg/fd/ast-grep, jq/yq, gh, repomix, difftastic) — Phase 4
+- [ ] Ship hook + MCP bundles (`ailayer add bundle <name>`) — Phases 5–6
+- [ ] Profile missing community marketplaces (`wshobson/agents`, `VoltAgent/awesome-agent-skills`) — Phase 7
 
 ---
 
