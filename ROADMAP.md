@@ -2,7 +2,7 @@
 
 > A phased PR plan to turn `ai_skills_and_tools` from a vendor catalogue into a productivity-grade skill library that injects cleanly into Claude Code, Codex CLI, and Gemini CLI.
 >
-> **Last updated:** 2026-05-04 · **Total PRs planned:** 40 · **Current state:** see [Diagnostic findings](#diagnostic-findings)
+> **Last updated:** 2026-05-06 · **Total PRs planned:** 47 · **Current state:** see [Diagnostic findings](#diagnostic-findings)
 
 Each PR below is **independently mergeable** and scoped to ~1 day of work. Dependencies are explicit. Phases are sequencing guidance, not hard gates — if a downstream PR is unblocked, ship it.
 
@@ -21,10 +21,11 @@ Four parallel research agents (Claude Code, Codex CLI, Gemini CLI, cross-tool pa
 | F3 | Codex adapter | Skills injected as `## skill:<name>` blocks in `AGENTS.md` — Codex now has a native skills dir at `~/.codex/skills/<name>/SKILL.md` | [openai/codex#skills](https://github.com/openai/codex) |
 | F4 | Gemini adapter | Writes `~/.gemini/commands/<name>.md` for skills — Gemini expects `.toml` files with `description` + `prompt` fields and `{{args}}`/`!{shell}`/`@{file}` injectors | [Gemini custom-commands docs](https://geminicli.com/docs/cli/custom-commands/) |
 | F5 | Gemini adapter | Hook event aliases collapse 11+ real events (`BeforeTool`/`AfterTool`/`BeforeAgent`/`AfterAgent`/`BeforeModel`/`AfterModel`/`BeforeToolSelection`/`SessionStart`/`SessionEnd`/`Notification`/`PreCompress`) into 2 (`beforeCommand`/`afterCommand`) | [Gemini hooks reference](https://geminicli.com/docs/hooks/reference/) |
-| F6 | Library content | 0 of 22 entries ships a `SKILL_PROMPT.md`; `ailayer` falls back to README documentation as the agent prompt | `library.py` fallback path |
+| F6 | Library content | All 22 entries ship a `SKILL_PROMPT.md`, but 21 of 22 lack the frontmatter required by the schema (see `docs/SKILL_PROMPT_SCHEMA.md`); `ailayer lint skills` flags them as errors | linter output, May 2026 |
 
 ### Library-content gaps
 
+- **Skill prompts lack metadata**: 21 of 22 `SKILL_PROMPT.md` files have no frontmatter — no machine-readable category, description, triggers, or safety level. `ailayer lint skills` enforces this from PR 11 onward.
 - **No methodology skills**: TDD, brainstorming, plans, debugging, verification — none are in the library, only loaded via Claude Code's `superpowers` plugin.
 - **No domain skills**: Postgres, Terraform, OpenAPI, security review, GraphQL, release engineering — all unrepresented.
 - **No CLI-helper skills**: `rg`/`fd`/`ast-grep`/`gh`/`jq`/`repomix`/`difftastic` — agents lack guided usage.
@@ -112,12 +113,12 @@ Four parallel research agents (Claude Code, Codex CLI, Gemini CLI, cross-tool pa
 
 > Today every entry has a README (vendor profile) but no `SKILL_PROMPT.md` (agent HOW-TO). Fix that systematically. Each PR converts one category.
 
-### PR 10 — `feat(skills): SKILL_PROMPT.md for AI Coding Assistants`
+### PR 10 — `feat(skills): bring AI Coding Assistant SKILL_PROMPT.md into schema`
 
-- **Goal:** ship agent-oriented prompts for the 7 coding-assistant entries.
-- **Scope:** add `SKILL_PROMPT.md` to: `cursor/`, `continue/`, `aider/`, `windsurf/`, `github-copilot/`, `caveman/`, `claude-mem/`. Each follows the schema landed in PR 11 below; ~150–300 lines, focused on what an agent should *do* (setup, common commands, when to use, gotchas).
-- **Acceptance:** `ailayer list skills` shows all 7 with summaries pulled from `SKILL_PROMPT.md` not README.
-- **Depends on:** PR 11 (schema).
+- **Goal:** add frontmatter and align section structure for the 7 coding-assistant entries' existing skill files.
+- **Scope:** edit `cursor/`, `continue/`, `aider/`, `windsurf/`, `github-copilot/`, `caveman/`, `claude-mem/` (claude-mem already done in PR 11). Add YAML frontmatter (`name`, `description`, `category`, `triggers`, `safety`); ensure the required `## Avoid` and recommended `## Setup`/`## Use`/`## Verify` sections exist; rewrite anything that's marketing prose into agent-oriented HOW-TO.
+- **Acceptance:** `ailayer lint skills` passes (no errors) for all 7 entries; `ailayer list skills` reads category/description from frontmatter.
+- **Depends on:** PR 11 (schema + linter).
 
 ### PR 11 — `feat(library): SKILL_PROMPT.md schema + linter`
 
@@ -126,18 +127,18 @@ Four parallel research agents (Claude Code, Codex CLI, Gemini CLI, cross-tool pa
 - **Acceptance:** schema doc exists; linter passes on at least the AI-coding-assistant entries from PR 10.
 - **Depends on:** PR 1.
 
-### PR 12 — `feat(skills): SKILL_PROMPT.md for Agents/Automation`
+### PR 12 — `feat(skills): bring Agents/Automation SKILL_PROMPT.md into schema`
 
-- **Goal:** convert the 5 agent-framework entries.
-- **Scope:** add `SKILL_PROMPT.md` to `langchain/`, `langgraph/`, `crewai/`, `autogpt/`, `n8n/`. Each captures: when to reach for this framework vs alternatives, scaffolding command, minimal "hello agent" pattern, deployment story, common footguns.
-- **Acceptance:** linter green on all 5; READMEs unchanged.
+- **Goal:** add frontmatter and align section structure for the 5 agent-framework entries.
+- **Scope:** edit `langchain/`, `langgraph/`, `crewai/`, `autogpt/`, `n8n/`. Add frontmatter; ensure each captures when to reach for this framework vs alternatives, scaffolding command, minimal "hello agent" pattern, deployment story, common footguns.
+- **Acceptance:** `ailayer lint skills` passes for all 5; READMEs unchanged.
 - **Depends on:** PR 11.
 
-### PR 13 — `feat(skills): SKILL_PROMPT.md for Writing/Marketing + Data tools`
+### PR 13 — `feat(skills): bring Writing/Marketing + Data SKILL_PROMPT.md into schema`
 
-- **Goal:** convert the remaining 10 entries (Jasper, Copy.ai, Perplexity, Notion AI, Writesonic, Julius, Akkio, Obviously AI, Bardeen, Polymer).
-- **Scope:** these are mostly SaaS — skill prompts focus on API/integration patterns, when an agent should call them vs roll its own, and credential handling.
-- **Acceptance:** linter green; INDEX.md categories unchanged.
+- **Goal:** add frontmatter and align section structure for the remaining 10 entries (Jasper, Copy.ai, Perplexity, Notion AI, Writesonic, Julius, Akkio, Obviously AI, Bardeen, Polymer).
+- **Scope:** these are mostly SaaS — skill prompts focus on API/integration patterns, when an agent should call them vs roll its own, and credential handling. Add frontmatter to existing files; rewrite content where marketing prose has crept in.
+- **Acceptance:** `ailayer lint skills` passes; INDEX.md categories unchanged.
 - **Depends on:** PR 11.
 
 ---

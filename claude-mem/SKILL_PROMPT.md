@@ -1,3 +1,13 @@
+---
+name: claude-mem
+description: Persistent cross-session memory for Claude Code / Codex CLI / Gemini CLI via local SQLite and vector store.
+category: Memory
+triggers: [memory, persistence, observations, cross-session, recall, claude-mem]
+safety: medium
+version: 2026-05-06
+homepage: https://github.com/thedotmack/claude-mem
+---
+
 # Claude-Mem skill
 
 Use this skill when installing or querying Claude-Mem to give a coding agent persistent memory across sessions.

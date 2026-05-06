@@ -21,6 +21,7 @@ import typer
 from rich.console import Console
 
 from ailayer.commands.add import add_app
+from ailayer.commands.lint import lint_app
 from ailayer.commands.list import list_app
 from ailayer.commands.remove import remove_app
 from ailayer.commands.status import status_app
@@ -38,6 +39,7 @@ app.add_typer(add_app, name="add")
 app.add_typer(remove_app, name="remove")
 app.add_typer(list_app, name="list")
 app.add_typer(status_app, name="status")
+app.add_typer(lint_app, name="lint")
 
 
 @app.callback()
