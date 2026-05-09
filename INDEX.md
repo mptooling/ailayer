@@ -2,7 +2,7 @@
 
 > A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
 >
-> **Last updated:** May 2026 | **Tools documented:** 22 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** May 2026 | **Tools documented:** 23 | **Next step:** per-tool automation & enablement guides
 
 ---
 
@@ -30,6 +30,16 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
 | [Caveman](./caveman/README.md) | ⭐ 53,000+ | Free (OSS) | Cutting agent output ~75%; multi-agent terse-mode plugin |
 | [Claude-Mem](./claude-mem/README.md) | ⭐ 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for Claude Code / Gemini CLI / OpenCode |
+
+---
+
+## 🎓 Skill Collections & Methodologies
+
+*Curated agent-skill packs you install into Claude Code, Codex CLI, OpenCode, or Cursor.*
+
+| Collection | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Matt Pocock — Skills For Real Engineers](./mattpocock-skills/README.md) | ⭐ 67,500+ | Free (OSS, MIT) | Surgical à-la-carte skills (`/grill-with-docs`, `/tdd`, `/diagnose`, `/improve-codebase-architecture`) targeting alignment + feedback-loop + architecture failure modes |
 
 ---
 
@@ -79,7 +89,7 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 
 | Role | Recommended tools |
 |---|---|
-| **IT / Engineering** | GitHub Copilot, Cursor, Continue, Aider, Windsurf, LangChain, LangGraph |
+| **IT / Engineering** | GitHub Copilot, Cursor, Continue, Aider, Windsurf, Matt Pocock — Skills, LangChain, LangGraph |
 | **Marketing** | Jasper, Copy.ai, Writesonic, Notion AI, Perplexity, n8n, CrewAI |
 | **Sales** | Copy.ai, Bardeen, Akkio, Julius AI, Perplexity, n8n |
 | **C-Level** | Julius AI, Polymer, Perplexity, Akkio, AutoGPT, Notion AI |
