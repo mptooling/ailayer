@@ -96,22 +96,37 @@ def split_frontmatter(text: str) -> tuple[Optional[dict], str]:
 # ── section detection ────────────────────────────────────────────────────────
 
 
+def _iter_prose_lines(body: str):
+    """Yield lines outside fenced code blocks.
+
+    Heading and word-count detection must skip fenced blocks so that bash
+    comments like `# install foo` aren't read as Markdown H1 titles.
+    """
+    in_fence = False
+    for line in body.splitlines():
+        if line.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if not in_fence:
+            yield line
+
+
 def find_h1_titles(body: str) -> list[str]:
-    """Return all H1 (`# `) titles in body."""
+    """Return all H1 (`# `) titles in body, ignoring fenced code blocks."""
     return [
         line[2:].strip()
-        for line in body.splitlines()
+        for line in _iter_prose_lines(body)
         if line.startswith("# ") and not line.startswith("## ")
     ]
 
 
 def find_h2_sections(body: str) -> set[str]:
-    """Return lowercased H2 section names in body."""
-    out: set[str] = set()
-    for line in body.splitlines():
-        if line.startswith("## "):
-            out.add(line[3:].strip().lower())
-    return out
+    """Return lowercased H2 section names in body, ignoring fenced code blocks."""
+    return {
+        line[3:].strip().lower()
+        for line in _iter_prose_lines(body)
+        if line.startswith("## ")
+    }
 
 
 def has_any(sections: set[str], synonyms: set[str]) -> bool:
@@ -120,15 +135,7 @@ def has_any(sections: set[str], synonyms: set[str]) -> bool:
 
 def word_count(body: str) -> int:
     """Approximate word count: split on whitespace, drop fenced code lines."""
-    cleaned: list[str] = []
-    in_fence = False
-    for line in body.splitlines():
-        if line.startswith("```"):
-            in_fence = not in_fence
-            continue
-        if not in_fence:
-            cleaned.append(line)
-    return sum(len(line.split()) for line in cleaned)
+    return sum(len(line.split()) for line in _iter_prose_lines(body))
 
 
 # ── linter ───────────────────────────────────────────────────────────────────
