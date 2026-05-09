@@ -2,7 +2,7 @@
 
 > A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
 >
-> **Last updated:** May 2026 | **Tools documented:** 23 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** May 2026 | **Tools documented:** 24 | **Next step:** per-tool automation & enablement guides
 
 ---
 
@@ -40,6 +40,7 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | Skill | Stars | Pricing | Best for |
 |---|---|---|---|
 | [Brainstorming](./brainstorming/README.md) | — (this library) | Free (OSS, MIT) | Socratic intent-clarification *before* any creative work — surfaces goals, scope, constraints, and unknowns before code is touched |
+| [Verification-before-completion](./verification-before-completion/README.md) | — (this library) | Free (OSS, MIT) | Forbid "done" claims without command-output evidence — run build/lint/typecheck/tests and paste the result before asserting completion |
 
 ---
 
