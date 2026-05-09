@@ -2,7 +2,7 @@
 
 > A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
 >
-> **Last updated:** May 2026 | **Tools documented:** 22 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** May 2026 | **Tools documented:** 23 | **Next step:** per-tool automation & enablement guides
 
 ---
 
@@ -30,6 +30,16 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
 | [Caveman](./caveman/README.md) | ⭐ 53,000+ | Free (OSS) | Cutting agent output ~75%; multi-agent terse-mode plugin |
 | [Claude-Mem](./claude-mem/README.md) | ⭐ 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for Claude Code / Gemini CLI / OpenCode |
+
+---
+
+## 🧭 Methodology Skills
+
+*Workflow skills that change *how* the agent works, not what it integrates with. Cross-CLI (Claude Code, Codex CLI, Gemini CLI).*
+
+| Skill | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Brainstorming](./brainstorming/README.md) | — (this library) | Free (OSS, MIT) | Socratic intent-clarification *before* any creative work — surfaces goals, scope, constraints, and unknowns before code is touched |
 
 ---
 
