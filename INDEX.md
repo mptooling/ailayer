@@ -2,7 +2,7 @@
 
 > A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
 >
-> **Last updated:** May 2026 | **Tools documented:** 26 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** May 2026 | **Tools documented:** 28 | **Next step:** per-tool automation & enablement guides
 
 ---
 
@@ -43,6 +43,8 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 | [Verification-before-completion](./verification-before-completion/README.md) | — (this library) | Free (OSS, MIT) | Forbid "done" claims without command-output evidence — run build/lint/typecheck/tests and paste the result before asserting completion |
 | [TDD](./tdd/README.md) | — (this library) | Free (OSS, MIT) | Strict red-green-refactor — write a failing test first, the minimum implementation to pass, then refactor. Vertical slices, regression tests as bug defence |
 | [Systematic Debugging](./systematic-debugging/README.md) | — (this library) | Free (OSS, MIT) | Reproduce → Isolate → Root-cause → Fix+Defend. Replaces shotgun-fixing with a four-step loop; every fix ships with the regression test that defends it |
+| [Writing Plans](./writing-plans/README.md) | — (this library) | Free (OSS, MIT) | Turn a confirmed brief into a numbered phased plan — vertical slices, file lists, test gates, rollback notes. Pairs with Executing Plans |
+| [Executing Plans](./executing-plans/README.md) | — (this library) | Free (OSS, MIT) | Drive a written plan one phase at a time with a test gate at each boundary and a confirm-pause before the next phase |
 
 ---
 
