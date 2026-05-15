@@ -21,6 +21,12 @@ Each row is a directory in this repo. Click the name for the human-readable prof
 | [windsurf](./windsurf/) | Autonomous multi-step coding inside an IDE |
 | [caveman](./caveman/) | Terse multi-agent output and lower token usage |
 | [claude-mem](./claude-mem/) | Persistent cross-session memory for coding agents |
+| [claude-code](./claude-code/) | Terminal-native autonomous coding with repo context |
+| [codex](./codex/) | OpenAI-native coding agent workflows |
+| [cline](./cline/) | Open-source VS Code agent with MCP and tool approvals |
+| [roo-code](./roo-code/) | Configurable open-source VS Code coding agent modes |
+| [opencode](./opencode/) | Open terminal coding agent with model flexibility |
+| [kiro](./kiro/) | Spec-driven agentic development environment |
 
 ### Methodology skills
 
@@ -44,6 +50,46 @@ Each row is a directory in this repo. Click the name for the human-readable prof
 | [crewai](./crewai/) | Role-based agents, tasks, memory, and tools |
 | [autogpt](./autogpt/) | Agent Protocol REST and Forge SDK for custom abilities |
 | [n8n](./n8n/) | Webhook triggers, native AI nodes, and custom node packaging |
+| [llamaindex](./llamaindex/) | Data-grounded RAG and document-agent applications |
+| [pydantic-ai](./pydantic-ai/) | Typed Python agents and structured outputs |
+| [openai-agents-sdk](./openai-agents-sdk/) | OpenAI-native agents, tools, handoffs, tracing, and guardrails |
+| [anthropic-agent-sdk](./anthropic-agent-sdk/) | Claude-centered agent SDK patterns |
+| [autogen](./autogen/) | Microsoft multi-agent orchestration and research workflows |
+| [semantic-kernel](./semantic-kernel/) | Microsoft AI orchestration for .NET, Python, and Java |
+| [mastra](./mastra/) | TypeScript agents, workflows, RAG, and evals |
+| [vercel-ai-sdk](./vercel-ai-sdk/) | Streaming AI features and tool calling for TypeScript web apps |
+| [dspy](./dspy/) | Evaluation-driven LLM program optimization |
+
+### Evaluate and observe AI systems
+
+| Skill | Best used for |
+|---|---|
+| [braintrust](./braintrust/) | CI/CD evals, production traces, and model/prompt comparisons |
+| [phoenix](./phoenix/) | Open-source AI observability, tracing, and evals |
+| [langfuse](./langfuse/) | Self-hostable LLM tracing, prompt management, and scores |
+| [weave](./weave/) | W&B-native LLM tracing and experiment lineage |
+| [deepeval](./deepeval/) | pytest-style LLM, RAG, and agent evaluation |
+| [ragas](./ragas/) | RAG quality metrics and retrieval evaluation |
+| [promptfoo](./promptfoo/) | Prompt, model, and red-team regression tests |
+
+### Connect tools and context
+
+| Skill | Best used for |
+|---|---|
+| [mcp](./mcp/) | Standardizing agent access to tools, resources, and prompts |
+| [fastmcp](./fastmcp/) | Building production-friendly Python MCP servers |
+| [modelcontextprotocol-servers](./modelcontextprotocol-servers/) | Reusing common MCP server integrations |
+
+### Run and retrieve
+
+| Skill | Best used for |
+|---|---|
+| [litellm](./litellm/) | Model routing, budgets, fallbacks, and provider abstraction |
+| [ollama](./ollama/) | Local open-model development and private prototypes |
+| [vllm](./vllm/) | High-throughput open-model inference serving |
+| [qdrant](./qdrant/) | Production vector search and RAG retrieval |
+| [chroma](./chroma/) | Local-first vector storage and RAG prototypes |
+| [pgvector](./pgvector/) | PostgreSQL-native vector search |
 
 ### Generate content
 
