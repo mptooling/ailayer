@@ -52,4 +52,24 @@ AutoGPT pioneered the concept of autonomous AI agents in 2023 and remains the mo
 
 ---
 
+## When To Use
+
+- Use this skill when running or extending AutoGPT for autonomous goal-directed agents.
+- Express the goal as a single concrete outcome, not a process: "produce a market-sizing report on X with cited sources" beats "research X."
+- Set `ai_role`, `ai_goals` (≤ 5), and `cost_limit` in the agent config. Without a cost limit, runaway agents will burn through API quota.
+
+## Practical Tips
+
+- Self-hosted: `git clone https://github.com/Significant-Gravitas/AutoGPT && cd AutoGPT && docker compose up`. Reads `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` from `.env`.
+- Cloud (faster start): use the AutoGPT Platform at `platform.agpt.co` for the no-code workflow builder; expose runs via its REST API.
+
+## Watch Outs
+
+- Letting an agent loop without `cost_limit` or `step_limit`.
+- Granting filesystem write access outside the workspace dir; AutoGPT enforces a sandbox — avoid bypass it.
+- Mixing the legacy CLI (`run.py`) and the Platform deployment in the same project — pick one.
+- Using Claude/GPT-4 with empty system prompts; AutoGPT's planning quality drops sharply without a constrained role.
+
+---
+
 *Last updated: April 2026*

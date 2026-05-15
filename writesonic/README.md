@@ -56,4 +56,24 @@ Writesonic is an AI content platform combining long-form writing, SEO optimisati
 
 ---
 
+## When To Use
+
+- Use this skill when calling Writesonic's API for content generation, SEO articles, or embedding Botsonic chatbots.
+- Pick the right endpoint per format: `chatsonic` for chat-style/web-grounded answers, `seo-articles-v3` for long-form SEO content, `instant-article-writer-v4` for short blogs, `landing-pages` for landing-page copy.
+- For SEO articles: pass `keywords`, `article_title`, `article_intro`, and optionally `article_sections`. Writesonic auto-fills missing pieces but quality drops; provide them when you have them.
+
+## Practical Tips
+
+- API key from `app.writesonic.com` → API. Send as `X-API-KEY: <key>`.
+- Base URL: `https://api.writesonic.com/v2/business/content/`. Most generation endpoints accept `engine` (`premium` for GPT-4-class, `economy` for cheaper) and `language` ISO codes.
+
+## Watch Outs
+
+- Hard-coding `engine: premium` for high-volume jobs — costs add up fast. Default to `economy` and switch up only for customer-facing content.
+- Using `seo-articles-v3` without supplying real keywords — the article will be on-topic but unranked.
+- Building production chatbots on Botsonic without a fallback to a human; the API has no SLA-grade guarantees.
+- Polling job status faster than once every 2s — you will get rate-limited.
+
+---
+
 *Last updated: April 2026*

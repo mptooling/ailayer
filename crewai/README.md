@@ -53,4 +53,24 @@ CrewAI is a framework for orchestrating multiple AI agents as a "crew" — each 
 
 ---
 
+## When To Use
+
+- Use this skill when orchestrating multiple role-based agents that collaborate on a task.
+- Define each `Agent` with three fields: `role`, `goal`, `backstory`. Keep them short and concrete — the backstory shapes tone, not behaviour.
+- Define each `Task` with `description`, `expected_output`, and the `agent` that owns it. `expected_output` is what gates task completion — write it precisely.
+
+## Practical Tips
+
+- Install with `pip install crewai crewai-tools`. Requires Python ≥ 3.10.
+- Set the LLM env var for your provider: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, or configure `LiteLLM` for local models.
+
+## Watch Outs
+
+- Giving every agent every tool — narrow tool lists improve reasoning.
+- Vague `expected_output` like "a summary" — agents will keep refining indefinitely.
+- Mixing CrewAI with raw LangChain `AgentExecutor`; use LangChain *tools* with CrewAI agents instead.
+- Running long crews without `verbose=True` during development — silent loops are nearly impossible to debug.
+
+---
+
 *Last updated: April 2026*

@@ -1,53 +1,67 @@
 # AI Tools & Skills Library
 
-> A curated, living library of the most impactful AI tools — categorised by use case, ranked by adoption, and documented for IT, Marketing, Sales, and C-Level audiences.
+> A curated, living library of impactful AI tools, agent skills, and workflow tips, grouped by use case and audience.
 >
-> **Last updated:** May 2026 | **Tools documented:** 22 | **Next step:** per-tool automation & enablement guides
+> **Last updated:** May 2026
 
 ---
 
-## How to use this library
+## How To Use This Library
 
-Each tool has its own folder with two files:
-
-- **`README.md`** — human-oriented documentation: GitHub link & star count, official docs, plain-English summary, related articles, and which AI agents integrate with the tool.
-- **`SKILL_PROMPT.md`** — agent-oriented HOW-TO instructions: setup, API patterns, what to do, what to avoid. This is what `ailayer add skill <name>` injects into Claude Code, Codex CLI, or Gemini CLI.
-
-When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but READMEs are documentation, not prompts, so always prefer the dedicated skill file.
+Each top-level directory contains one `README.md` profile. Use the category tables below to find a tool, then open the profile for practical guidance: when to use it, how to apply it, and what to watch out for.
 
 ---
 
-## 🖥️ AI Coding Assistants
+## AI Coding Assistants
 
 *For IT/engineering teams. Tools that write, complete, review, and refactor code.*
 
 | Tool | Stars | Pricing | Best for |
 |---|---|---|---|
-| [GitHub Copilot](./github-copilot/README.md) | — (closed source) | $10–39/mo | Enterprise dev teams, GitHub-native workflows |
+| [GitHub Copilot](./github-copilot/README.md) | — (closed source) | $10-39/mo | Enterprise dev teams, GitHub-native workflows |
 | [Cursor](./cursor/README.md) | — (closed source) | Free / $20/mo | Deep codebase understanding, model choice |
-| [Continue](./continue/README.md) | ⭐ 24,000+ | Free (OSS) | Data privacy, on-prem, model flexibility |
-| [Aider](./aider/README.md) | ⭐ 25,000+ | Free (OSS) | Terminal-native, git-integrated, batch refactors |
+| [Continue](./continue/README.md) | 24,000+ | Free (OSS) | Data privacy, on-prem, model flexibility |
+| [Aider](./aider/README.md) | 25,000+ | Free (OSS) | Terminal-native, git-integrated, batch refactors |
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
-| [Caveman](./caveman/README.md) | ⭐ 53,000+ | Free (OSS) | Cutting agent output ~75%; multi-agent terse-mode plugin |
-| [Claude-Mem](./claude-mem/README.md) | ⭐ 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for Claude Code / Gemini CLI / OpenCode |
+| [Caveman](./caveman/README.md) | 53,000+ | Free (OSS) | Cutting agent output by roughly 75%; terse multi-agent collaboration |
+| [Claude-Mem](./claude-mem/README.md) | 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for coding agents |
 
 ---
 
-## 🤖 AI Agents & Automation
+## Methodology Skills
+
+*Workflow skills that change how an agent or human operator works, not what tool they integrate with.*
+
+These workflow skills are compatible with the Superpowers style of agent collaboration: clarify intent, plan multi-step work, execute in small verified batches, and report only after verification.
+
+| Skill | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Brainstorming](./brainstorming/README.md) | — (this library) | Free (OSS, MIT) | Socratic intent clarification before creative work |
+| [Verification-before-completion](./verification-before-completion/README.md) | — (this library) | Free (OSS, MIT) | Evidence-backed completion claims |
+| [TDD](./tdd/README.md) | — (this library) | Free (OSS, MIT) | Strict red-green-refactor for features and bug fixes |
+| [Systematic Debugging](./systematic-debugging/README.md) | — (this library) | Free (OSS, MIT) | Reproduce, isolate, root-cause, fix, and defend |
+| [Writing Plans](./writing-plans/README.md) | — (this library) | Free (OSS, MIT) | Turning a confirmed brief into a phased implementation plan |
+| [Executing Plans](./executing-plans/README.md) | — (this library) | Free (OSS, MIT) | Working through a written plan with checkpoints |
+| [Dispatching Parallel Agents](./dispatching-parallel-agents/README.md) | — (this library) | Free (OSS, MIT) | Splitting independent work across parallel agents |
+| [Using Git Worktrees](./using-git-worktrees/README.md) | — (this library) | Free (OSS, MIT) | Isolating feature work in separate worktrees |
+
+---
+
+## AI Agents & Automation
 
 *Cross-functional. Tools for building autonomous agents and workflow automation.*
 
 | Tool | Stars | Pricing | Best for |
 |---|---|---|---|
-| [LangChain](./langchain/README.md) | ⭐ 126,000+ | Free (OSS) | Production AI apps, RAG pipelines, agent chains |
-| [AutoGPT](./autogpt/README.md) | ⭐ 167,000+ | Free (OSS) / Cloud | Autonomous goal-directed agents, no-code platform |
-| [n8n](./n8n/README.md) | ⭐ 150,000+ | Free / $24/mo | No-code AI workflow automation, 600+ integrations |
-| [CrewAI](./crewai/README.md) | ⭐ 44,300+ | Free (OSS) | Role-based multi-agent teams, marketing/sales workflows |
-| [LangGraph](./langgraph/README.md) | ⭐ 24,800+ | Free (OSS) | Production multi-agent systems, stateful orchestration |
+| [LangChain](./langchain/README.md) | 126,000+ | Free (OSS) | Production AI apps, RAG pipelines, agent chains |
+| [AutoGPT](./autogpt/README.md) | 167,000+ | Free (OSS) / Cloud | Autonomous goal-directed agents, no-code platform |
+| [n8n](./n8n/README.md) | 150,000+ | Free / $24/mo | No-code AI workflow automation, 600+ integrations |
+| [CrewAI](./crewai/README.md) | 44,300+ | Free (OSS) | Role-based multi-agent teams, marketing/sales workflows |
+| [LangGraph](./langgraph/README.md) | 24,800+ | Free (OSS) | Production multi-agent systems, stateful orchestration |
 
 ---
 
-## ✍️ AI Writing & Marketing
+## AI Writing & Marketing
 
 *For Marketing, Sales, and content teams. Tools for creating and scaling content.*
 
@@ -61,7 +75,7 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 
 ---
 
-## 📊 AI Data & Analytics
+## AI Data & Analytics
 
 *For C-Level, analysts, Sales, and Marketing. Tools for insights without SQL or data science.*
 
@@ -87,14 +101,13 @@ When `SKILL_PROMPT.md` is missing, `ailayer` falls back to `README.md` — but R
 
 ---
 
-## Roadmap
+## Maintenance Notes
 
-- [ ] Add automation scripts per tool (setup, API examples)
-- [ ] Add internal enablement guides per role
-- [ ] Add cost comparison matrix
-- [ ] Add security & compliance notes per tool
-- [ ] Expand to 40+ tools (second batch)
+- Keep each profile concise and practical.
+- Prefer official docs and source repositories over second-hand summaries.
+- Update pricing, star counts, and product positioning when they change.
+- Add new entries only when they provide a distinct tool, skill, or workflow tip.
 
 ---
 
-*Built with Purpose Green · AI Tools Library · April 2026*
+*Built with Purpose Green · AI Tools Library · May 2026*

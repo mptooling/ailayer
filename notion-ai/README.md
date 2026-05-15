@@ -55,4 +55,24 @@ Notion AI is the AI layer built directly into Notion — the workspace platform 
 
 ---
 
+## When To Use
+
+- Use this skill when reading from or writing to a Notion workspace via the official API, including ingesting Notion content for RAG.
+- Fetch a page: `client.pages.retrieve(page_id=...)`. Page IDs are 32-char hex strings; pull them from URLs after the last hyphen and add hyphens at the standard offsets (the SDK accepts both forms).
+- For full content, you must walk blocks: `client.blocks.children.list(block_id=...)` paginates. Recurse into block types that have children (toggles, columns, callouts).
+
+## Practical Tips
+
+- Create an internal integration at `notion.so/my-integrations`; copy the secret. Send as `Authorization: Bearer <secret>` and `Notion-Version: 2022-06-28` (or current).
+- The integration must be explicitly *shared* with each page or database it should access — do this in the Notion UI's "Connections" menu.
+- SDKs: `pip install notion-client` or `npm install @notionhq/client`. Prefer the SDK over raw HTTP for retry handling.
+
+## Watch Outs
+
+- Hard-coding page IDs across environments; store them in a config map.
+- Re-indexing the entire workspace on every cron tick — it's slow and you'll hit the 3 req/s rate limit.
+- Embedding the integration secret in client-side code; the API forbids browser-origin requests anyway.
+
+---
+
 *Last updated: April 2026*

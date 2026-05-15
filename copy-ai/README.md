@@ -56,4 +56,24 @@ Copy.ai started as an AI copywriting tool for ads, emails, and social posts, and
 
 ---
 
+## When To Use
+
+- Use this skill when calling the Copy.ai API to generate content or trigger Workflows from code.
+- Endpoint: `POST /workflow/{workflow_id}/run`. Workflow IDs come from the URL of any workflow built in the web UI.
+- Body shape: `{ "startVariables": { "<input_name>": "<value>" } }`. Input names are defined per workflow — fetch them with `GET /workflow/{id}` if you don't know them.
+
+## Practical Tips
+
+- Get an API key from the Copy.ai workspace under Settings → API. Send as `x-copy-ai-api-key: <key>` header.
+- Base URL: `https://api.copy.ai/api/`. All payloads are JSON.
+
+## Watch Outs
+
+- Embedding Copy.ai keys in client-side code — calls must go through your server.
+- Hard-coding workflow IDs across multiple environments; use a config map keyed by env (dev/staging/prod each have their own workspace).
+- Polling more than once per second; the API will rate-limit and you'll get HTTP 429.
+- Sending raw PII without checking the workspace's data-retention policy first.
+
+---
+
 *Last updated: April 2026*

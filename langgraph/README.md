@@ -52,4 +52,23 @@ LangGraph is LangChain's framework for building stateful, multi-actor AI applica
 
 ---
 
+## When To Use
+
+- Use this skill when building stateful, multi-actor agent applications where you need persistence, human-in-the-loop, or branching control flow.
+- Model state as a `TypedDict`. Use `Annotated[list, add_messages]` for conversation history; LangGraph merges automatically.
+- Build with `StateGraph(MyState)`. Add nodes with `.add_node("name", fn)` where each `fn(state) -> dict` returns the *delta* to merge into state.
+
+## Practical Tips
+
+- Install: `pip install langgraph langgraph-checkpoint-sqlite langchain-anthropic` (swap the model package as needed).
+- Read API keys from env (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`). For tracing: `LANGCHAIN_TRACING_V2=true`, `LANGCHAIN_API_KEY=...`.
+
+## Watch Outs
+
+- Mutating `state` in-place inside a node — return a delta dict instead.
+- Skipping the checkpointer in dev "to keep things simple" — debugging stateless graphs is much harder than debugging stateful ones.
+- Mixing LangChain's deprecated `AgentExecutor` with LangGraph nodes; pick one.
+
+---
+
 *Last updated: April 2026*

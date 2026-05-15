@@ -52,4 +52,30 @@ Caveman is a multi-agent plugin that flips a coding agent into "caveman mode" �
 
 ---
 
+## When To Use
+
+- Use this skill when installing or driving the `caveman` plugin to put a coding agent into terse, token-reduced response mode.
+- Trigger inside an agent session with `/caveman` (Claude Code, Gemini CLI), `$caveman` (Codex), or any of: "talk like caveman", "caveman mode", "less tokens please".
+- Pick intensity at activation: `/caveman lite` (light trim), `/caveman full` (default, ~75% output cut), `/caveman ultra` (maximum compression, fragment-style), `/caveman wenyan` (classical Chinese 文言文 mode).
+
+## Practical Tips
+
+- Universal one-liner (auto-detects 30+ agents):
+- macOS / Linux / WSL: `curl -fsSL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.sh | bash`
+- Windows PowerShell: `irm https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.ps1 | iex`
+- Useful flags: `--minimal` (plugin only, no hooks/MCP), `--all` (plugin + hooks + statusline + MCP shrink + per-repo rules), `--dry-run`, `--only <agent>`, `--list`, `--force`.
+- Manual per-agent install:
+- Claude Code: `claude plugin marketplace add JuliusBrussee/caveman && claude plugin install caveman@caveman`
+- Gemini CLI: `gemini extensions install https://github.com/JuliusBrussee/caveman`
+- Cursor / Windsurf / Cline / Copilot: `npx skills add JuliusBrussee/caveman -a <cursor|windsurf|cline|github-copilot>`
+
+## Watch Outs
+
+- Caveman mode in customer-facing or written-deliverable contexts (PR descriptions for stakeholders, user-facing docs, support replies). The terseness reads as rude outside engineering channels.
+- Running `--with-init` in a shared repo without the team's agreement — it commits a coding-style preference into project files.
+- Stacking caveman with other prose-style rules; conflicting instructions degrade output. Pick one voice per agent profile.
+- Trusting the 75% number for *every* prompt — savings range 22–87% depending on task. Use `caveman-stats` to measure your actual ratio before claiming wins.
+
+---
+
 *Last updated: 2026-05*

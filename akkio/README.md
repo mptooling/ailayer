@@ -56,4 +56,24 @@ Akkio is a no-code AI platform focused on **predictive analytics** — building 
 
 ---
 
+## When To Use
+
+- Use this skill when integrating Akkio's predictive ML models from code (lead scoring, churn, forecasting).
+- Reference a model by its `model_id` (visible in the model's URL after training).
+- For row-level prediction: `client.predict(model_id, [{"col1": v, ...}])` — the input dict keys must match the training columns exactly.
+
+## Practical Tips
+
+- Install the official SDK: `pip install akkio` (Python) or `npm install akkio` (Node).
+- Auth via `AKKIO_API_KEY` env var. Generate keys in Akkio's web UI under Settings → API.
+- The web UI is the only place to *train* a model. Code is the path to *consume* an already-trained one.
+
+## Watch Outs
+
+- Re-training on every prediction call — Akkio bills training compute separately.
+- Submitting columns the model wasn't trained on; the API silently drops unknown keys and accuracy degrades.
+- Hard-coding a model_id in long-lived code without a fallback if the model is archived. Read it from config.
+
+---
+
 *Last updated: April 2026*
