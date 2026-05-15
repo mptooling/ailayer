@@ -54,4 +54,23 @@ Cursor is a VS Code fork rebuilt around AI-first interactions. It indexes entire
 
 ---
 
+## When To Use
+
+- Use this skill when authoring Cursor-specific project rules or configuring a repo for Cursor users.
+- Modern Cursor reads rules from `.cursor/rules/*.mdc` (multiple scoped files) — *prefer this over* the legacy single `.cursorrules` file.
+- Each `.mdc` file has YAML frontmatter: `description`, `globs` (file patterns the rule applies to), and `alwaysApply` (boolean). The body is the rule prompt.
+
+## Practical Tips
+
+- Use this skill when authoring Cursor-specific project rules or configuring a repo for Cursor users.
+- Modern Cursor reads rules from `.cursor/rules/*.mdc` (multiple scoped files) — *prefer this over* the legacy single `.cursorrules` file.
+- Each `.mdc` file has YAML frontmatter: `description`, `globs` (file patterns the rule applies to), and `alwaysApply` (boolean). The body is the rule prompt.
+
+## Watch Outs
+
+- One giant `.cursorrules` file in 2026 — it loads on every prompt regardless of relevance and crowds out file context.
+- Encoding security policy *only* in Cursor rules; rules are advisory to the model. Pair with linters and CI checks for anything that must be enforced.
+
+---
+
 *Last updated: April 2026*

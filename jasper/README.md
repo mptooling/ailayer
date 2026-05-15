@@ -55,4 +55,23 @@ Jasper is the leading AI writing platform purpose-built for enterprise marketing
 
 ---
 
+## When To Use
+
+- Use this skill when calling the Jasper API to generate brand-aligned marketing content from code.
+- Endpoint: `POST /commands/run` with `{ "command": "<command_name>", "inputs": {...}, "brand_voice_id": "...", "knowledge_base_ids": [...] }`.
+- Common commands: `blog-post-outline`, `email-subject-lines`, `product-description`, `social-media-post`. Full list under `GET /commands`.
+
+## Practical Tips
+
+- Get an API key from Jasper under Account → API. Send as `Authorization: Bearer <key>`. Base URL `https://api.jasper.ai/v1/`.
+- Brand Voice and Knowledge Base are *workspace*-level concepts. Configure them in the UI; the API merely references them by ID.
+
+## Watch Outs
+
+- Storing API keys in the front end — Jasper enforces server-side use only.
+- Using Jasper for code generation; it's tuned for marketing prose and will produce low-quality code.
+- Re-running the same prompt to get variants — pass `n: <int>` to get multiple outputs per call.
+
+---
+
 *Last updated: April 2026*

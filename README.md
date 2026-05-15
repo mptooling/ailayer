@@ -1,118 +1,99 @@
 # AI Skills & Tools
 
-> A curated library of AI skills, paired with **`ailayer`** — a CLI that turns each skill into a ready-to-use slash command, hook, or instruction for **Claude Code, Codex CLI, and Gemini CLI**.
+> A curated, practical library of AI tools, agent skills, and workflow tips.
 
-Pick a skill. Run `ailayer add skill <name> --tool all`. Your agents now know how to use that tool the way *you* want them to — across every IDE.
+Use this repo as a browseable reference. Each directory contains a concise profile that explains when to use a tool or skill, what it is good for, practical tips, and common watch outs.
 
 ---
 
-## Skills, classified by aim
+## Browse By Aim
 
-Each row is a directory in this repo. Click the name for the human-readable README; the agent-readable `SKILL_PROMPT.md` lives next to it.
+Each row is a directory in this repo. Click the name for the human-readable profile.
 
-### 🖥️ Write code
+### Write code
 
-| Skill | What it gives the agent |
+| Skill | Best used for |
 |---|---|
-| [github-copilot](./github-copilot/) | How to use `gh copilot` CLI and author `.github/copilot-instructions.md` |
-| [cursor](./cursor/) | How to write modern `.cursor/rules/*.mdc` scoped rules |
-| [continue](./continue/) | How to configure `~/.continue/config.json` and slash commands |
-| [aider](./aider/) | How to drive Aider interactively or from CI for batch refactors |
-| [windsurf](./windsurf/) | How to constrain Windsurf's Cascade agent and its terminal allow-list |
-| [caveman](./caveman/) | How to install + invoke the multi-agent caveman plugin (~75% output token cut) |
-| [claude-mem](./claude-mem/) | How to install Claude-Mem and query its 3-layer MCP search for cross-session memory |
+| [github-copilot](./github-copilot/) | GitHub-native coding assistance and repository guidance |
+| [cursor](./cursor/) | Deep codebase understanding, scoped rules, and model choice |
+| [continue](./continue/) | Local or private coding assistance with flexible model providers |
+| [aider](./aider/) | Terminal-native, git-integrated batch refactors |
+| [windsurf](./windsurf/) | Autonomous multi-step coding inside an IDE |
+| [caveman](./caveman/) | Terse multi-agent output and lower token usage |
+| [claude-mem](./claude-mem/) | Persistent cross-session memory for coding agents |
 
-### 🤖 Build agents and automations
+### Methodology skills
 
-| Skill | What it gives the agent |
+| Skill | Best used for |
 |---|---|
-| [langchain](./langchain/) | LCEL composition, modern tool binding, RAG patterns |
-| [langgraph](./langgraph/) | Stateful graphs, checkpointers, human-in-the-loop interrupts |
-| [crewai](./crewai/) | Role-based agents, tasks, memory, tools |
-| [autogpt](./autogpt/) | Agent Protocol REST + Forge SDK for custom abilities |
-| [n8n](./n8n/) | Webhook triggers, native AI nodes, custom node packaging |
+| [brainstorming](./brainstorming/) | Clarifying intent, scope, constraints, and success criteria before creative work |
+| [verification-before-completion](./verification-before-completion/) | Requiring evidence before claiming work is complete |
+| [tdd](./tdd/) | Driving features and fixes through red-green-refactor |
+| [systematic-debugging](./systematic-debugging/) | Reproducing, isolating, root-causing, and defending bug fixes |
+| [writing-plans](./writing-plans/) | Turning a confirmed brief into a phased implementation plan |
+| [executing-plans](./executing-plans/) | Working through a written plan with checkpoints |
+| [dispatching-parallel-agents](./dispatching-parallel-agents/) | Splitting independent work across parallel agents |
+| [using-git-worktrees](./using-git-worktrees/) | Isolating feature work in separate worktrees |
 
-### ✍️ Generate content
+### Build agents and automations
 
-| Skill | What it gives the agent |
+| Skill | Best used for |
 |---|---|
-| [jasper](./jasper/) | Brand-voiced commands and campaigns via the Jasper API |
-| [copy-ai](./copy-ai/) | GTM Workflows API for personalised outreach pipelines |
-| [writesonic](./writesonic/) | Per-format endpoints (SEO articles, Chatsonic, Botsonic) |
-| [perplexity](./perplexity/) | Cited, web-grounded answers via the `sonar` chat-completions API |
-| [notion-ai](./notion-ai/) | The official Notion API for read/write and Notion-as-RAG |
+| [langchain](./langchain/) | LCEL composition, modern tool binding, and RAG patterns |
+| [langgraph](./langgraph/) | Stateful graphs, checkpointers, and human-in-the-loop interrupts |
+| [crewai](./crewai/) | Role-based agents, tasks, memory, and tools |
+| [autogpt](./autogpt/) | Agent Protocol REST and Forge SDK for custom abilities |
+| [n8n](./n8n/) | Webhook triggers, native AI nodes, and custom node packaging |
 
-### 📊 Work with data
+### Generate content
 
-| Skill | What it gives the agent |
+| Skill | Best used for |
 |---|---|
-| [julius-ai](./julius-ai/) | Conversational data analysis from CSVs and live DB connectors |
-| [akkio](./akkio/) | Predict endpoint usage with confidence-aware outputs |
-| [obviously-ai](./obviously-ai/) | Predict + always-on explainability pattern |
-| [bardeen](./bardeen/) | Browser-automation playbook triggers and scrape rate-limits |
-| [polymer](./polymer/) | Dashboard data flow and public/private embed patterns |
+| [jasper](./jasper/) | Brand-voiced campaigns and enterprise marketing content |
+| [copy-ai](./copy-ai/) | GTM workflows and personalised outreach pipelines |
+| [writesonic](./writesonic/) | SEO articles, Chatsonic, and Botsonic workflows |
+| [perplexity](./perplexity/) | Cited, web-grounded research and answers |
+| [notion-ai](./notion-ai/) | Notion workspace writing, summaries, and lightweight RAG |
 
-> 22 skills today. Detailed comparisons (stars, pricing, integrations) live in [`INDEX.md`](./INDEX.md).
+### Work with data
 
----
+| Skill | Best used for |
+|---|---|
+| [julius-ai](./julius-ai/) | Conversational data analysis from CSVs and live database connectors |
+| [akkio](./akkio/) | Predictive analytics with confidence-aware outputs |
+| [obviously-ai](./obviously-ai/) | Explainable no-code predictions |
+| [bardeen](./bardeen/) | Browser automation, scraping, and enrichment workflows |
+| [polymer](./polymer/) | Dashboards, data flow, and shareable embeds |
 
-## How a skill is structured
-
-Every skill directory ships two files for two audiences:
-
-| File | For | Contents |
-|---|---|---|
-| `README.md` | Humans browsing the library | Repo links, summary, pricing, comparisons |
-| `SKILL_PROMPT.md` | The agent that will *use* the tool | 20–40 lines of imperative HOW-TO — setup, API patterns, what to avoid |
-
-`ailayer add skill <name>` injects `SKILL_PROMPT.md` (falling back to `README.md` only if the skill prompt is missing).
+Detailed comparisons, pricing notes, and audience quick-reference tables live in [INDEX.md](./INDEX.md).
 
 ---
 
-## Quickstart
+## Adding Or Updating An Entry
 
-```bash
-# 1. Install the CLI
-pip install -e ./ailayer --break-system-packages   # or: pipx install ./ailayer
+1. Create or edit a top-level directory such as `langchain/` or `tdd/`.
+2. Keep the entry in one `README.md`.
+3. Include category metadata near the top using the existing blockquote style.
+4. Add practical sections: `When To Use`, `Practical Tips`, and `Watch Outs`.
+5. Add or update the matching row in `INDEX.md`.
 
-# 2. Inject a skill
-ailayer add skill langchain --tool claude          # Claude Code, global
-ailayer add skill crewai    --tool all             # Claude + Codex + Gemini
-ailayer add skill aider     --tool claude --no-global --project ./my-app
+## Next Step: Superpowers Enablement
 
-# 3. Inspect what's installed
-ailayer status
-ailayer list skills
-```
+After the library-only refactor is complete, enable the Superpowers workflow as contributor guidance. Superpowers should be documented as a recommended way to work on this repository, not as a product feature of the catalog.
 
-Other things `ailayer` can do:
+Recommended workflows:
 
-```bash
-ailayer add hook lint --event pre --command "ruff check ." --tool all
-ailayer add mcp filesystem --cmd npx --args "-y,@modelcontextprotocol/server-filesystem"
-ailayer add instruction python-style --file ./guides/python-style.md
-ailayer remove skill langchain --tool claude
-```
+- Use brainstorming before adding a new tool, skill, or tip category.
+- Use writing-plans for multi-entry restructures or taxonomy changes.
+- Use verification-before-completion before claiming a catalog update is done.
+- Use systematic-debugging only when a script, validation command, or generated artifact fails.
 
-Full CLI reference: **[`ailayer/README.md`](./ailayer/README.md)**.
+## Repo Guides
 
----
-
-## Adding a new skill
-
-1. `mkdir my-skill` at the repo root.
-2. Drop in a `README.md` with a `> **Category:** … | **Pricing:** … | **Type:** …` header line — the index parser uses it.
-3. Drop in a `SKILL_PROMPT.md` (20–40 lines, imperative): setup, the main API/usage patterns, a short "Avoid" list. No marketing copy, no descriptions of what the tool *is* — focus on how the agent should *use* it.
-4. Run `ailayer list skills` to confirm pickup.
-5. Add the skill to the relevant table in this README and in [`INDEX.md`](./INDEX.md).
-
----
-
-## Repo guides
-
-- **[`INDEX.md`](./INDEX.md)** — categorised tool index with stars, pricing, audience quick-reference.
-- **[`ailayer/README.md`](./ailayer/README.md)** — full CLI reference and architecture diagram.
-- **[`CLAUDE.md`](./CLAUDE.md)** — operational guide for Claude Code sessions in this repo.
+- [INDEX.md](./INDEX.md) — categorised tool index with pricing, audience, and recommendation notes.
+- [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) — contribution checklist for library entries.
+- [AGENTS.md](./AGENTS.md) — operational guidance for Codex sessions in this repo.
+- [CLAUDE.md](./CLAUDE.md) — operational guidance for Claude Code sessions in this repo.
 
 ---
 

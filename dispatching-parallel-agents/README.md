@@ -1,6 +1,6 @@
 # Dispatching Parallel Agents — fan-out-to-sub-agents skill
 
-> **Category:** Methodology | **License:** MIT | **Type:** Cross-CLI agent skill (Claude Code, Codex CLI, Gemini CLI)
+> **Category:** Methodology | **License:** MIT | **Type:** Workflow skill
 
 A skill that recognises when work *can* be split across parallel sub-agents and dispatches it in a single turn, instead of serialising independent tasks. Distilled from `obra/superpowers:dispatching-parallel-agents` and the multi-agent orchestration patterns in `wshobson/agents:conductor`.
 
@@ -14,9 +14,6 @@ Three rules govern dispatch:
 2. **One message, multiple tool calls.** Parallel work is dispatched in a single assistant turn. Splitting fan-out across turns negates the savings.
 3. **Each sub-agent gets a self-contained brief.** Sub-agents don't see the parent conversation; the brief must include enough context that the sub-agent can act without follow-up questions.
 
-## Why it ships in this library
-
-The `superpowers` version is Claude-Code-only (it talks specifically about the `Task` / `Agent` tool). The wshobson framework bundles parallel dispatch inside a larger conductor concept. To get the discipline portably across Claude Code, Codex CLI, and Gemini CLI via `ailayer`, the skill needs a self-contained, model-agnostic version — keyed on the *principle* (independent work fans out in one turn) rather than any one tool's sub-agent API. That's what's in `SKILL_PROMPT.md`.
 
 ## What good looks like
 
@@ -46,6 +43,29 @@ A non-example: "first read auth, then based on what I find, decide whether to re
 - `executing-plans` (Phase 2) — drives dependent phases sequentially; defers to this skill for independent ones.
 - `using-git-worktrees` (Phase 2) — when parallel agents touch the same repo, isolate each in its own worktree to prevent collisions.
 
-## Which AI agents integrate
 
-Any agent that supports concurrent tool calls or sub-agent dispatch in a single turn. `ailayer add skill dispatching-parallel-agents --tool all` injects it into Claude Code, Codex CLI, and Gemini CLI in one shot.
+---
+
+## When To Use
+
+- If the work has *any* dependency between sub-tasks — output of A feeds input of B, both write to the same file, one decides whether the other runs — do **not** parallelise. Stay sequential.
+
+## How To Apply
+
+- No install. Behavioural — the agent reads this and adopts the discipline.
+- Before dispatching, run the independence test in writing:
+- Parallel plan:
+- Sub-task A — <one-line goal>; inputs <list>; outputs <list>
+- Sub-task B — <one-line goal>; inputs <list>; outputs <list>
+- Sub-task C — …
+- Independence check:
+- No output of A is an input of B/C? ✓
+
+## Watch Outs
+
+- **Serial calls that could be parallel.** Reading three independent files one after the other in three separate turns is the canonical waste this skill exists to prevent.
+- **Parallelising work with hidden dependencies.** "Both sub-agents will edit the same config file" is a write-write collision waiting to happen. Run the independence check honestly — if in doubt, sequential.
+- **Vague briefs.** "Look at the auth code and report back" wastes a sub-agent. Briefs name files, name questions, name output shape, and cap length.
+- **Dispatching without synthesising.** The parent must combine the sub-agent results; pasting raw outputs back is not an answer.
+- **Fanning out for cosmetic speed.** Two trivial Reads avoid need sub-agents — direct tool calls in one turn are faster and cheaper. Sub-agent dispatch is for work substantial enough to justify the context cost.
+- **Forgetting that sub-agents have no memory.** A sub-agent doesn't see prior turns or the user's preferences. The brief must carry everything the sub-agent needs.

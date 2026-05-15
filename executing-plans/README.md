@@ -1,6 +1,6 @@
 # Executing Plans — phase-by-phase plan-driver skill
 
-> **Category:** Methodology | **License:** MIT | **Type:** Cross-CLI agent skill (Claude Code, Codex CLI, Gemini CLI)
+> **Category:** Methodology | **License:** MIT | **Type:** Workflow skill
 
 A skill that drives a written plan (typically the output of [`writing-plans`](../writing-plans/README.md)) one phase at a time, pausing at each phase boundary for user confirmation. Distilled from `obra/superpowers:executing-plans` and the multi-agent orchestration patterns in `wshobson/agents:conductor` and `mattpocock/skills:do`.
 
@@ -19,9 +19,6 @@ The executor:
 
 The discipline is the pause. Without it, plans degenerate into long todo lists the agent races through and the user audits in retrospect.
 
-## Why it ships in this library
-
-`obra/superpowers:executing-plans` is Claude-Code-only. The wshobson and mattpocock equivalents ship in their own packs. To get the same discipline portably across Claude Code, Codex CLI, and Gemini CLI via `ailayer`, the skill needs a self-contained, model-agnostic version. That's what's in `SKILL_PROMPT.md`.
 
 ## What good looks like
 
@@ -53,8 +50,31 @@ The executor never proceeds past the confirmation prompt without an affirmative 
 - `writing-plans` (Phase 2) — produces the plan this skill drives.
 - `tdd` (Phase 2) — each phase's test gate is a TDD red→green loop.
 - `verification-before-completion` (Phase 2) — gates the final phase before "done."
-- `dispatching-parallel-agents` (Phase 2 upcoming) — fan-out for *independent* phases when the plan supports it.
+- `dispatching-parallel-agents` — fan-out for *independent* phases when the plan supports it.
 
-## Which AI agents integrate
 
-Any agent that loads Markdown skills/slash-commands. `ailayer add skill executing-plans --tool all` injects it into Claude Code, Codex CLI, and Gemini CLI in one shot.
+---
+
+## When To Use
+
+- If there is no plan, this skill does not apply — write one (`writing-plans`) or proceed without phasing.
+
+## How To Apply
+
+- No install. Behavioural — the agent reads this and adopts the discipline. The plan being executed must already be **confirmed** by the user (per `writing-plans`); an unconfirmed plan isn't a contract and shouldn't drive execution.
+- Execute one phase per turn. Avoid skip ahead.
+- For each phase:
+- **State the phase.** Echo the phase title and goal back. This is a sanity check that the executor and the plan are aligned.
+- **Implement only that phase.** No peeking ahead. No "while I'm here" edits to other phases. No refactoring outside the phase's file list.
+- **Run the test gate.** Use the exact command from the plan. Paste the output:
+- $ <test command>
+- <output>
+
+## Watch Outs
+
+- **Implementing multiple phases in one turn.** This is the failure mode this skill exists to prevent. Phase boundaries are review boundaries — collapsing them defeats the plan.
+- **Pre-implementing phase N+1 "because it's quick."** That's a different change. Park it; the next phase will absorb it cleanly.
+- **Skipping the test gate** when "the plan said it should pass." Run it. Paste it.
+- **Treating a missed test gate as a planning error without checking.** First re-isolate (per `systematic-debugging`) — sometimes the gate is right and the implementation is wrong.
+- **Auto-confirming on the user's behalf.** "Continuing to phase 4 since the previous one passed" is forbidden unless the user explicitly waived the pause.
+- **Editing the plan mid-execution.** If reality contradicts the plan, *stop, report, and re-plan*. Don't silently amend.

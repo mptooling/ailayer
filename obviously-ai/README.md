@@ -55,4 +55,24 @@ Obviously AI is a no-code predictive analytics platform that enables non-technic
 
 ---
 
+## When To Use
+
+- Use this skill when calling Obviously AI's REST API to consume already-trained predictive models from code.
+- Endpoint: `POST /predict/{model_id}/`. Body: `{"data": [{"col_a": v, "col_b": v}, ...]}`. Send rows in arrays; the API supports batch up to ~1000 rows per call.
+- Response includes `predictions[i].value`, `predictions[i].probability`, and `predictions[i].explanation` (top features that drove the result). Always pass the explanation through to end users — the platform's value is explainability.
+
+## Practical Tips
+
+- Get an API key in the Obviously AI app under Settings → API. Send as `Authorization: Token <key>`.
+- Base URL: `https://api.obviously.ai/v1/`. All payloads JSON.
+- Models are *trained in the UI*, not via API. Code consumes deployed models — it cannot kick off training.
+
+## Watch Outs
+
+- Showing only the predicted value without the per-feature explanation — that defeats the tool's purpose and the user can't sanity-check.
+- Sending a column the model wasn't trained on; the API errors out (unlike Akkio which silently drops it).
+- Building a feedback loop that retrains by exporting and re-uploading data — use the platform's scheduled retraining instead, configured in the UI.
+
+---
+
 *Last updated: April 2026*

@@ -54,4 +54,24 @@ Windsurf (rebranded from Codeium in late 2024) is an AI-native IDE built around 
 
 ---
 
+## When To Use
+
+- Use this skill when configuring a repo for Windsurf users or driving Windsurf's Cascade agent from automation.
+- Windsurf reads `.windsurf/rules/*.md` (multi-file, scoped) and the legacy `.windsurfrules` (single file). Prefer the multi-file form.
+- Each rule file can declare `globs:` and `description:` in YAML frontmatter, identical in spirit to Cursor's `.cursor/rules/*.mdc`.
+
+## Practical Tips
+
+- Use this skill when configuring a repo for Windsurf users or driving Windsurf's Cascade agent from automation.
+- Windsurf reads `.windsurf/rules/*.md` (multi-file, scoped) and the legacy `.windsurfrules` (single file). Prefer the multi-file form.
+- Each rule file can declare `globs:` and `description:` in YAML frontmatter, identical in spirit to Cursor's `.cursor/rules/*.mdc`.
+
+## Watch Outs
+
+- Encoding security policy in rules alone — Cascade is permissive by default. Combine rules with terminal-allow-listing and CI-side guards.
+- Letting Cascade run unattended without `max_steps`; it will keep iterating on flaky tests until it hits the model rate limit.
+- Maintaining `.windsurfrules` and `.cursor/rules/*.mdc` independently — drift causes confusing differences in agent behaviour across editors.
+
+---
+
 *Last updated: April 2026*

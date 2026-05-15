@@ -53,4 +53,24 @@ GitHub Copilot is the most widely adopted AI code completion tool, used by 1.3M+
 
 ---
 
+## When To Use
+
+- Use this skill when scripting Copilot CLI calls, configuring Copilot for a repo, or building Copilot Extensions.
+- Add `.github/copilot-instructions.md` at repo root — Copilot Chat reads it as the system context for every turn in this repo.
+- Keep instructions imperative and short: project conventions, build/test commands, and forbidden patterns. Same scope rules as Cursor's `.cursorrules`.
+
+## Practical Tips
+
+- Use this skill when scripting Copilot CLI calls, configuring Copilot for a repo, or building Copilot Extensions.
+- Add `.github/copilot-instructions.md` at repo root — Copilot Chat reads it as the system context for every turn in this repo.
+- Keep instructions imperative and short: project conventions, build/test commands, and forbidden patterns. Same scope rules as Cursor's `.cursorrules`.
+
+## Watch Outs
+
+- Putting secrets or internal URLs in `.github/copilot-instructions.md` — Copilot includes it in prompts that may be logged.
+- Using Copilot suggestions verbatim in security-sensitive code (auth, crypto, query construction) without manual review.
+- Maintaining duplicate rules in `.cursorrules` and `copilot-instructions.md`; pick one source of truth and symlink or reference.
+
+---
+
 *Last updated: April 2026*

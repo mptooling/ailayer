@@ -55,4 +55,22 @@ Polymer transforms any spreadsheet or CSV into an interactive, AI-powered dashbo
 
 ---
 
+## When To Use
+
+- Use this skill when piping data into Polymer dashboards or sharing dashboard links from automated workflows.
+- For Google Sheets: write to a sheet from your stack; Polymer pulls it on its scheduled refresh interval (configure in Polymer per source).
+- For Airtable: same pattern — your code writes records via the Airtable API, Polymer reads them.
+
+## Practical Tips
+
+- Polymer is a UI-first product. There is no public REST API for dashboard creation. Code interacts with Polymer in two ways: by *feeding data sources* and by *embedding/sharing dashboards*.
+- Sign in once and connect a data source (Sheets, Airtable, Shopify, CSV upload, or a JDBC database) under Data → Sources.
+
+## Watch Outs
+
+- Building automation that "creates a dashboard from a CSV programmatically" — there is no such endpoint. Use a templating workflow in the UI and let code only refresh the underlying data.
+- Sharing dashboards that aggregate sensitive customer data via the public-link option; switch to private embed instead.
+
+---
+
 *Last updated: April 2026*

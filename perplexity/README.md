@@ -54,4 +54,23 @@ Perplexity AI is an AI-powered answer engine that combines real-time web search 
 
 ---
 
+## When To Use
+
+- Use this skill when calling the Perplexity API for cited, web-grounded answers from code.
+- For live web search: use a `sonar` model (`sonar`, `sonar-pro`, `sonar-reasoning`). These do retrieval automatically — avoid bolt on a separate search step.
+- For pure reasoning without retrieval, use `sonar-reasoning-pro`. Skip Perplexity entirely if you don't need citations — Claude/GPT-4 are cheaper.
+
+## Practical Tips
+
+- Get an API key from `perplexity.ai/settings/api`. Send as `Authorization: Bearer <key>`.
+- Base URL: `https://api.perplexity.ai/`. The API mirrors OpenAI's chat-completions shape — most OpenAI client libs work with `base_url` overridden.
+
+## Watch Outs
+
+- Streaming with `sonar-reasoning` for short queries — first-token latency is high; just await the full response.
+- Trusting a single citation; for high-stakes claims have the agent cross-check with a second query.
+- Sending follow-up turns that depend on prior `citations` — Perplexity does not retain them across turns; restate the relevant context in the new prompt.
+
+---
+
 *Last updated: April 2026*

@@ -1,6 +1,6 @@
 # Using Git Worktrees — isolated-workspace skill
 
-> **Category:** Methodology | **License:** MIT | **Type:** Cross-CLI agent skill (Claude Code, Codex CLI, Gemini CLI)
+> **Category:** Methodology | **License:** MIT | **Type:** Workflow skill
 
 A skill that pushes the agent to create a dedicated git worktree before starting feature work, instead of mutating the current checkout. Distilled from `obra/superpowers:using-git-worktrees` and the worktree conventions in `mattpocock/skills:engineering`.
 
@@ -14,9 +14,6 @@ The skill is opinionated about three things:
 2. **One worktree per feature branch.** Worktrees are cheap; reusing one for two unrelated branches defeats the isolation.
 3. **Clean up when done.** A merged branch's worktree is dead weight. `git worktree remove` is part of the "finishing a branch" flow, not an afterthought.
 
-## Why it ships in this library
-
-`obra/superpowers:using-git-worktrees` is Claude-Code-only and tied to a specific worktree-helper tool. The mattpocock conventions live inside a larger engineering pack. To get worktree discipline portably across Claude Code, Codex CLI, and Gemini CLI via `ailayer`, the skill needs a self-contained, model-agnostic version that works with plain `git worktree` commands. That's what's in `SKILL_PROMPT.md`.
 
 ## What good looks like
 
@@ -50,8 +47,31 @@ A non-example: editing five files on `main` directly, then running `git checkout
 - `writing-plans` (Phase 2) — set up the worktree before executing the plan, so each phase commits from an isolated checkout.
 - `executing-plans` (Phase 2) — phase-by-phase execution lives inside the worktree.
 - `dispatching-parallel-agents` (Phase 2) — when parallel agents touch the same repo, give each its own worktree to avoid write-write collisions.
-- `finishing-a-development-branch` (Phase 2 upcoming) — owns the worktree teardown step.
+- `finishing-a-development-branch` — owns the worktree teardown step.
 
-## Which AI agents integrate
 
-Any agent with shell access. `ailayer add skill using-git-worktrees --tool all` injects it into Claude Code, Codex CLI, and Gemini CLI in one shot.
+---
+
+## When To Use
+
+- If the change is a one-line edit or a docs-only fix, skip the worktree — the overhead exceeds the benefit. For everything else, worktree first.
+
+## How To Apply
+
+- Worktrees are a native git feature (≥ 2.5). No install. Conventions:
+- Worktree path: sibling directory named `../<repo>-<slug>` where `<slug>` matches the branch (e.g. branch `feat/billing` → `../myrepo-feat-billing`).
+- Branch naming: `feat/...`, `fix/...`, `chore/...`, `refactor/...` — match the repo's existing convention.
+- Base branch: usually `main` (or whichever branch the user names).
+- Before touching code on a new feature:
+- git worktree add ../<repo>-<slug> -b <branch> <base>
+- cd ../<repo>-<slug>
+- Then do all feature work in the new directory. The main checkout stays at whatever branch the user had — clean, free for unrelated edits, free for the user to keep using.
+
+## Watch Outs
+
+- **Starting feature work in the main checkout, then `git checkout -b` after the fact.** The branch carries whatever uncommitted state was lying around, and the main checkout is no longer clean. Worktree *first*.
+- **Reusing one worktree for two unrelated branches.** Defeats the isolation; the next `git stash` accident wipes both. One worktree per active branch.
+- **Worktree paths inside the main checkout** (e.g. `./subdir/worktree`). Tools that walk the tree (test runners, linters, build systems) get confused. Use a sibling directory.
+- **Forgetting to remove a worktree after merge.** Dead weight accumulates; old worktrees become misleading "live" copies. Removal is part of finishing the branch.
+- **`rm -rf <worktree>` to clean up.** Leaves a stale entry in `.git/worktrees/`. Use `git worktree remove` (and `git worktree prune` if the directory is already gone).
+- **Worktree-hopping mid-task.** Switching back to the main checkout to "just check one thing" tends to bleed edits across branches. Stay in the worktree until the phase is done; if you must check the main, do it read-only.
