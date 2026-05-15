@@ -32,9 +32,9 @@ Five to ten targeted questions, no more. The skill explicitly forbids writing co
 
 ## Compose-with
 
-- `writing-plans` (Phase 2) — turns the brief into a phased plan.
-- `tdd` (Phase 2) — writes failing tests before implementation.
-- `verification-before-completion` (Phase 2) — closes the loop by requiring evidence that success criteria are met.
+- `writing-plans` — turns the brief into a phased plan.
+- `tdd` — writes failing tests before implementation.
+- `verification-before-completion` — closes the loop by requiring evidence that success criteria are met.
 
 
 ---

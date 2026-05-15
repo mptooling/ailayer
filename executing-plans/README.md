@@ -47,9 +47,9 @@ The executor never proceeds past the confirmation prompt without an affirmative 
 
 ## Compose-with
 
-- `writing-plans` (Phase 2) — produces the plan this skill drives.
-- `tdd` (Phase 2) — each phase's test gate is a TDD red→green loop.
-- `verification-before-completion` (Phase 2) — gates the final phase before "done."
+- `writing-plans` — produces the plan this skill drives.
+- `tdd` — each phase's test gate is a TDD red→green loop.
+- `verification-before-completion` — gates the final phase before "done."
 - `dispatching-parallel-agents` — fan-out for *independent* phases when the plan supports it.
 
 

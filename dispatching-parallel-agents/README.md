@@ -39,9 +39,9 @@ A non-example: "first read auth, then based on what I find, decide whether to re
 
 ## Compose-with
 
-- `writing-plans` (Phase 2) — produces the plan whose *independent* phases this skill can fan out.
-- `executing-plans` (Phase 2) — drives dependent phases sequentially; defers to this skill for independent ones.
-- `using-git-worktrees` (Phase 2) — when parallel agents touch the same repo, isolate each in its own worktree to prevent collisions.
+- `writing-plans` — produces the plan whose *independent* phases this skill can fan out.
+- `executing-plans` — drives dependent phases sequentially; defers to this skill for independent ones.
+- `using-git-worktrees` — when parallel agents touch the same repo, isolate each in its own worktree to prevent collisions.
 
 
 ---
