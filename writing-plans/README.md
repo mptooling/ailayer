@@ -43,9 +43,9 @@ Five to nine phases is typical. More than that, the work is too big — split in
 
 ## Compose-with
 
-- `brainstorming` (Phase 2) — produces the brief this skill turns into a plan.
-- `executing-plans` (Phase 2) — drives the plan with checkpoint reviews.
-- `tdd` (Phase 2) — each phase's test gate is a TDD red→green pair.
+- `brainstorming` — produces the brief this skill turns into a plan.
+- `executing-plans` — drives the plan with checkpoint reviews.
+- `tdd` — each phase's test gate is a TDD red→green pair.
 
 
 ---

@@ -77,9 +77,9 @@ Detailed comparisons, pricing notes, and audience quick-reference tables live in
 4. Add practical sections: `When To Use`, `Practical Tips`, and `Watch Outs`.
 5. Add or update the matching row in `INDEX.md`.
 
-## Next Step: Superpowers Enablement
+## Superpowers Contributor Workflow
 
-After the library-only refactor is complete, enable the Superpowers workflow as contributor guidance. Superpowers should be documented as a recommended way to work on this repository, not as a product feature of the catalog.
+Superpowers is documented as a recommended way to work on this repository, not as a product feature of the catalog.
 
 Recommended workflows:
 

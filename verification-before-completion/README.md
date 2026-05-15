@@ -8,7 +8,7 @@ A short, opinionated skill that forbids "done" claims without **evidence**. Dist
 
 When the agent finishes implementing a feature/fix/refactor and is about to say "done," "fixed," "passing," "ready to merge" — this skill forces it to first run the verification commands (build, lint, typecheck, tests) and **paste the actual output** into the conversation. No verification output → no completion claim allowed.
 
-This is the single highest-leverage skill in the public canon according to multiple sources (`obra/superpowers`, the cross-tool research synthesised in `ROADMAP.md`). It directly counters the failure mode where an agent reports success and the user discovers minutes later that the build is broken.
+This is the single highest-leverage skill in the public canon according to multiple sources, including `obra/superpowers`. It directly counters the failure mode where an agent reports success and the user discovers minutes later that the build is broken.
 
 
 ## What good looks like
@@ -30,9 +30,9 @@ Failure mode: a passing-build assertion without command output. The skill explic
 
 ## Compose-with
 
-- `brainstorming` (Phase 2) — produces the success criteria that this skill verifies against.
-- `tdd` (Phase 2) — supplies the failing tests that this skill confirms now pass.
-- `systematic-debugging` (Phase 2) — required regression test fits naturally in the verification step.
+- `brainstorming` — produces the success criteria that this skill verifies against.
+- `tdd` — supplies the failing tests that this skill confirms now pass.
+- `systematic-debugging` — required regression test fits naturally in the verification step.
 
 
 ---

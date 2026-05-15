@@ -28,7 +28,7 @@ For methodology skills, `How To Apply` can replace `Practical Tips` when the ent
 
 ## Superpowers Workflow
 
-After the library-only refactor, use Superpowers skills as the default collaboration workflow for non-trivial changes:
+Use Superpowers skills as the default collaboration workflow for non-trivial changes:
 
 - `brainstorming`: use before adding new categories, changing taxonomy, or redesigning entry format.
 - `writing-plans`: use before broad refactors that touch many entries.

@@ -41,8 +41,8 @@ If any of those five lines is missing or hand-waved, the loop hasn't run.
 
 ## Compose-with
 
-- `tdd` (Phase 2) — the regression test in step 4 is exactly a TDD red→green pair.
-- `verification-before-completion` (Phase 2) — once the regression test passes, verification closes the loop on the fix.
+- `tdd` — the regression test in step 4 is exactly a TDD red→green pair.
+- `verification-before-completion` — once the regression test passes, verification closes the loop on the fix.
 - `brainstorming` — when the bug is really a misunderstanding of requirements, escalate back to brainstorming rather than fixing the wrong thing.
 
 

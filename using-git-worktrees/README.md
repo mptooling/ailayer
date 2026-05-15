@@ -44,9 +44,9 @@ A non-example: editing five files on `main` directly, then running `git checkout
 
 ## Compose-with
 
-- `writing-plans` (Phase 2) — set up the worktree before executing the plan, so each phase commits from an isolated checkout.
-- `executing-plans` (Phase 2) — phase-by-phase execution lives inside the worktree.
-- `dispatching-parallel-agents` (Phase 2) — when parallel agents touch the same repo, give each its own worktree to avoid write-write collisions.
+- `writing-plans` — set up the worktree before executing the plan, so each phase commits from an isolated checkout.
+- `executing-plans` — phase-by-phase execution lives inside the worktree.
+- `dispatching-parallel-agents` — when parallel agents touch the same repo, give each its own worktree to avoid write-write collisions.
 - `finishing-a-development-branch` — owns the worktree teardown step.
 
 
