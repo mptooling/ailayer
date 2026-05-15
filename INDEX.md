@@ -25,6 +25,12 @@ Each top-level directory contains one `README.md` profile. Use the category tabl
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
 | [Caveman](./caveman/README.md) | 53,000+ | Free (OSS) | Cutting agent output by roughly 75%; terse multi-agent collaboration |
 | [Claude-Mem](./claude-mem/README.md) | 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for coding agents |
+| [Claude Code](./claude-code/README.md) | — (closed source) | Paid via Anthropic plans/API usage | Terminal-native autonomous coding with repo context |
+| [Codex](./codex/README.md) | — (closed source) | Paid via OpenAI plans/API usage | OpenAI-native coding agent workflows |
+| [Cline](./cline/README.md) | OSS | Free client / API costs vary | Open-source VS Code agent with MCP and tool approvals |
+| [Roo Code](./roo-code/README.md) | OSS | Free client / API costs vary | Configurable open-source VS Code coding agent modes |
+| [OpenCode](./opencode/README.md) | OSS | Free client / API costs vary | Open terminal coding agent with model flexibility |
+| [Kiro](./kiro/README.md) | — (closed source) | Paid SaaS / preview availability varies | Spec-driven agentic development environment |
 
 ---
 
@@ -58,6 +64,58 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [n8n](./n8n/README.md) | 150,000+ | Free / $24/mo | No-code AI workflow automation, 600+ integrations |
 | [CrewAI](./crewai/README.md) | 44,300+ | Free (OSS) | Role-based multi-agent teams, marketing/sales workflows |
 | [LangGraph](./langgraph/README.md) | 24,800+ | Free (OSS) | Production multi-agent systems, stateful orchestration |
+| [LlamaIndex](./llamaindex/README.md) | OSS | Free OSS + managed services | Data-grounded RAG and document-agent applications |
+| [Pydantic AI](./pydantic-ai/README.md) | OSS | Free OSS | Typed Python agents and structured outputs |
+| [OpenAI Agents SDK](./openai-agents-sdk/README.md) | OSS | Free SDK / API usage billed separately | OpenAI-native agents, tools, handoffs, tracing, and guardrails |
+| [Anthropic Agent SDK](./anthropic-agent-sdk/README.md) | — | Free SDK / API usage billed separately | Claude-centered agent SDK patterns |
+| [AutoGen](./autogen/README.md) | OSS | Free OSS | Microsoft multi-agent orchestration and research workflows |
+| [Semantic Kernel](./semantic-kernel/README.md) | OSS | Free OSS | Microsoft AI orchestration for .NET, Python, and Java |
+| [Mastra](./mastra/README.md) | OSS | Free OSS + cloud services | TypeScript agents, workflows, RAG, and evals |
+| [Vercel AI SDK](./vercel-ai-sdk/README.md) | OSS | Free OSS / provider usage billed separately | Streaming AI features and tool calling for TypeScript web apps |
+| [DSPy](./dspy/README.md) | OSS | Free OSS | Evaluation-driven LLM program optimization |
+
+---
+
+## Evals & Observability
+
+*For engineering teams shipping AI systems. Tools for tracing, regression testing, model comparison, and production quality control.*
+
+| Tool | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Braintrust](./braintrust/README.md) | — | Free tier + paid SaaS | CI/CD evals, production traces, and model/prompt comparisons |
+| [Arize Phoenix](./phoenix/README.md) | OSS | Free OSS + Arize platform | Open-source AI observability, tracing, and evals |
+| [Langfuse](./langfuse/README.md) | OSS | Free OSS + paid cloud | Self-hostable LLM tracing, prompt management, and scores |
+| [W&B Weave](./weave/README.md) | OSS | Free tier + paid W&B plans | W&B-native LLM tracing and experiment lineage |
+| [DeepEval](./deepeval/README.md) | OSS | Free OSS + Confident AI platform | pytest-style LLM, RAG, and agent evaluation |
+| [Ragas](./ragas/README.md) | OSS | Free OSS + hosted offerings | RAG quality metrics and retrieval evaluation |
+| [promptfoo](./promptfoo/README.md) | OSS | Free OSS + paid cloud | Prompt, model, and red-team regression tests |
+
+---
+
+## MCP & Tooling
+
+*For agent platform builders. Tools for connecting agents to APIs, data, files, browsers, and developer systems.*
+
+| Tool | Stars | Pricing | Best for |
+|---|---|---|---|
+| [Model Context Protocol](./mcp/README.md) | Open standard | Free | Standardizing agent access to tools, resources, and prompts |
+| [FastMCP](./fastmcp/README.md) | OSS | Free OSS | Building production-friendly Python MCP servers |
+| [MCP Servers](./modelcontextprotocol-servers/README.md) | OSS | Free OSS | Reusing common MCP server integrations |
+
+---
+
+## Runtime & Retrieval Infrastructure
+
+*For AI platform teams. Libraries and infrastructure for model routing, local inference, serving, embeddings, and vector search.*
+
+| Tool | Stars | Pricing | Best for |
+|---|---|---|---|
+| [LiteLLM](./litellm/README.md) | OSS | Free OSS + enterprise offerings | Model routing, budgets, fallbacks, and provider abstraction |
+| [Ollama](./ollama/README.md) | OSS | Free OSS | Local open-model development and private prototypes |
+| [vLLM](./vllm/README.md) | OSS | Free OSS | High-throughput open-model inference serving |
+| [Qdrant](./qdrant/README.md) | OSS | Free OSS + managed cloud | Production vector search and RAG retrieval |
+| [Chroma](./chroma/README.md) | OSS | Free OSS + hosted cloud | Local-first vector storage and RAG prototypes |
+| [pgvector](./pgvector/README.md) | OSS | Free OSS | PostgreSQL-native vector search |
 
 ---
 
@@ -93,7 +151,9 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 
 | Role | Recommended tools |
 |---|---|
-| **IT / Engineering** | GitHub Copilot, Cursor, Continue, Aider, Windsurf, LangChain, LangGraph |
+| **IT / Engineering** | Claude Code, Codex, Cursor, GitHub Copilot, Cline, Aider, LangGraph, OpenAI Agents SDK |
+| **AI Platform** | LiteLLM, vLLM, Ollama, Qdrant, pgvector, MCP, FastMCP, Phoenix |
+| **AI Product Engineering** | Vercel AI SDK, Mastra, Pydantic AI, LlamaIndex, Braintrust, promptfoo, Ragas |
 | **Marketing** | Jasper, Copy.ai, Writesonic, Notion AI, Perplexity, n8n, CrewAI |
 | **Sales** | Copy.ai, Bardeen, Akkio, Julius AI, Perplexity, n8n |
 | **C-Level** | Julius AI, Polymer, Perplexity, Akkio, AutoGPT, Notion AI |
