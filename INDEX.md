@@ -25,6 +25,7 @@ Each top-level directory contains one `README.md` profile. Use the category tabl
 | [Windsurf](./windsurf/README.md) | — (closed source) | Free / $15/mo | Autonomous multi-step coding agents, enterprise self-hosting |
 | [Caveman](./caveman/README.md) | 53,000+ | Free (OSS) | Cutting agent output by roughly 75%; terse multi-agent collaboration |
 | [Claude-Mem](./claude-mem/README.md) | 71,000+ | Free (OSS, AGPL-3.0) | Persistent cross-session memory for coding agents |
+| [Everything Claude Code](./everything-claude-code/README.md) | 185,000+ | Free (OSS, MIT) / Pro app $19/seat/mo | Cross-harness skills, hooks, rules, security checks, and workflow conventions |
 | [Claude Code](./claude-code/README.md) | — (closed source) | Paid via Anthropic plans/API usage | Terminal-native autonomous coding with repo context |
 | [Codex](./codex/README.md) | — (closed source) | Paid via OpenAI plans/API usage | OpenAI-native coding agent workflows |
 | [Cline](./cline/README.md) | OSS | Free client / API costs vary | Open-source VS Code agent with MCP and tool approvals |
