@@ -32,6 +32,7 @@ Each top-level directory contains one `README.md` profile. Use the category tabl
 | [Roo Code](./roo-code/README.md) | OSS | Free client / API costs vary | Configurable open-source VS Code coding agent modes |
 | [OpenCode](./opencode/README.md) | OSS | Free client / API costs vary | Open terminal coding agent with model flexibility |
 | [Kiro](./kiro/README.md) | — (closed source) | Paid SaaS / preview availability varies | Spec-driven agentic development environment |
+| [RTK](./rtk/README.md) | 54,000+ | Free (OSS, Apache-2.0) | CLI proxy that cuts 60–90% of tool-output tokens (git, tests, lint, AWS, k8s) for coding agents |
 
 ---
 
