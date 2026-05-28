@@ -53,6 +53,7 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [Executing Plans](./executing-plans/README.md) | — (this library) | Free (OSS, MIT) | Working through a written plan with checkpoints |
 | [Dispatching Parallel Agents](./dispatching-parallel-agents/README.md) | — (this library) | Free (OSS, MIT) | Splitting independent work across parallel agents |
 | [Using Git Worktrees](./using-git-worktrees/README.md) | — (this library) | Free (OSS, MIT) | Isolating feature work in separate worktrees |
+| [Matt Pocock — Skills for Real Engineers](./mattpocock-skills/README.md) | 109,000+ | Free (OSS, MIT) | Install-ready external skill pack: grilling, TDD, diagnose, PRD/issues, handoff |
 
 ---
 
