@@ -33,6 +33,7 @@ Each top-level directory contains one `README.md` profile. Use the category tabl
 | [OpenCode](./opencode/README.md) | OSS | Free client / API costs vary | Open terminal coding agent with model flexibility |
 | [Kiro](./kiro/README.md) | — (closed source) | Paid SaaS / preview availability varies | Spec-driven agentic development environment |
 | [RTK](./rtk/README.md) | 54,000+ | Free (OSS, Apache-2.0) | CLI proxy that cuts 60–90% of tool-output tokens (git, tests, lint, AWS, k8s) for coding agents |
+| [OpenHands](./openhands/README.md) | 75,000+ | Free (OSS, MIT) / paid cloud | Self-hosted autonomous SWE agent that executes whole tasks in a sandbox |
 
 ---
 
@@ -52,6 +53,7 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [Executing Plans](./executing-plans/README.md) | — (this library) | Free (OSS, MIT) | Working through a written plan with checkpoints |
 | [Dispatching Parallel Agents](./dispatching-parallel-agents/README.md) | — (this library) | Free (OSS, MIT) | Splitting independent work across parallel agents |
 | [Using Git Worktrees](./using-git-worktrees/README.md) | — (this library) | Free (OSS, MIT) | Isolating feature work in separate worktrees |
+| [Matt Pocock — Skills for Real Engineers](./mattpocock-skills/README.md) | 109,000+ | Free (OSS, MIT) | Install-ready external skill pack: grilling, TDD, diagnose, PRD/issues, handoff |
 
 ---
 
@@ -75,6 +77,8 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [Mastra](./mastra/README.md) | OSS | Free OSS + cloud services | TypeScript agents, workflows, RAG, and evals |
 | [Vercel AI SDK](./vercel-ai-sdk/README.md) | OSS | Free OSS / provider usage billed separately | Streaming AI features and tool calling for TypeScript web apps |
 | [DSPy](./dspy/README.md) | OSS | Free OSS | Evaluation-driven LLM program optimization |
+| [Dify](./dify/README.md) | 143,000+ | Free (OSS, modified Apache-2.0) / paid cloud | Low-code platform for building, shipping, and operating LLM apps and agentic workflows |
+| [Browser Use](./browser-use/README.md) | 96,000+ | Free (OSS, MIT) / paid cloud | LLM-driven browser automation for web tasks with no API |
 
 ---
 
@@ -103,12 +107,13 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [Model Context Protocol](./mcp/README.md) | Open standard | Free | Standardizing agent access to tools, resources, and prompts |
 | [FastMCP](./fastmcp/README.md) | OSS | Free OSS | Building production-friendly Python MCP servers |
 | [MCP Servers](./modelcontextprotocol-servers/README.md) | OSS | Free OSS | Reusing common MCP server integrations |
+| [Firecrawl](./firecrawl/README.md) | 125,000+ | Free (OSS, AGPL-3.0) / paid cloud | Scrape, crawl, and search the web into clean LLM-ready data for agents and RAG |
 
 ---
 
 ## Runtime & Retrieval Infrastructure
 
-*For AI platform teams. Libraries and infrastructure for model routing, local inference, serving, embeddings, and vector search.*
+*For AI platform teams. Libraries and infrastructure for model routing, local inference, serving, fine-tuning, embeddings, and vector search.*
 
 | Tool | Stars | Pricing | Best for |
 |---|---|---|---|
@@ -118,6 +123,7 @@ These workflow skills are compatible with the Superpowers style of agent collabo
 | [Qdrant](./qdrant/README.md) | OSS | Free OSS + managed cloud | Production vector search and RAG retrieval |
 | [Chroma](./chroma/README.md) | OSS | Free OSS + hosted cloud | Local-first vector storage and RAG prototypes |
 | [pgvector](./pgvector/README.md) | OSS | Free OSS | PostgreSQL-native vector search |
+| [Unsloth](./unsloth/README.md) | 65,000+ | Free (OSS, Apache-2.0) | Fast, low-VRAM fine-tuning of open models (LoRA/QLoRA) on a single GPU |
 
 ---
 
